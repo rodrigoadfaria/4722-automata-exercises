@@ -1,0 +1,65 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[latin1,utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{clrscode3e} % for the pseudocode
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{framed}
+\usepackage{caption}
+% for tables
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+% for the graphs %
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usetikzlibrary{shapes,snakes}
+\usepackage{verbatim}
+
+\usepackage{tabto}
+
+\graphicspath{ {imgs/} }
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newcommand\floor[1]{\big\lfloor#1\big\rfloor}
+\newcommand\ceil[1]{\big\lceil#1\big\rceil}
+\newcommand\bgfrac[2]{\bigg(\dfrac{#1}{#2}\bigg)}
+
+
+\begin{document}
+
+\title{MAC 4722 - Linguagens, Autômatos e Computabilidade}
+\author{Rodrigo Augusto Dias Faria\\
+Departamento de Ciência da Computação - IME/USP}
+
+\maketitle
+
+\begin{center}
+\textbf{\large{Lista 1}}
+\end{center}
+\input{l1/01}
+
+\end{document}
