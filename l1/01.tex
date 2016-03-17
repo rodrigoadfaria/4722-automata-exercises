@@ -1,20 +1,21 @@
-\noindent L1.1 Dado um grafo $G$ sem laços nem arestas múltiplas, dizemos que $G$ é uma árvore se qualquer par de vértices distintos é interligado por um único caminho que não repete vértices. Demonstre que toda Árvore $G$ com pelo menos $n \geq 1$ vértices possui exatamente $n - 1$ arestas. Sugestão: aplique uma indução em $n$; ou suponha por absurdo a existência de um contraexemplo com quantidade mínima de arestas.
+
+\noindent \textbf{L1.01} Dado um grafo $G$ sem laços nem arestas múltiplas, dizemos que $G$ é uma árvore se qualquer par de vértices distintos é interligado por um único caminho que não repete vértices. Demonstre que toda Árvore $G$ com pelo menos $n \geq 1$ vértices possui exatamente $n - 1$ arestas. Sugestão: aplique uma indução em $n$; ou suponha por absurdo a existência de um contraexemplo com quantidade mínima de arestas.
 
 \begin{proof}
 Prova por indução em $n$.\\
 
-Sejam $V$ e $E$ o conjunto de vértices e arestas do grafo $G$, respectivamente.\\
+Sejam $V$ e $E$ o conjunto de vértices e arestas do grafo $G$, respectivamente.
 
-\textbf{Base:} para $n = 1$, temos:
+\indbase Para $n = 1$, temos:
 \begin{align*}
 |E[G]| = 0 &= n - 1 \\
       &= 1 - 1 \\
       &= 0
 \end{align*}
 
-\textbf{Hipótese de Indução:} assuma que a afirmação é verdadeira para qualquer árvore com um número de vértices menor do que $n$.\\
+\indhipo Assuma que a afirmação é verdadeira para qualquer árvore com um número de vértices menor do que $n$.
 
-\textbf{Passo:} vamos considerar uma árvore $T$ com $n$ vértices. Seja $e$ uma aresta que conecta dois vértices $u$ e $v$ em $T$. Por definição de árvore, o único caminho entre $u$ e $v$ é a aresta $e$. Vamos remover $e$. Logo, teremos dois novos componentes (conexos e acíclicos), que também são árvores, $T'$ e $T''$, onde:
+\indstep Vamos considerar uma árvore $T$ com $n$ vértices. Seja $e$ uma aresta que conecta dois vértices $u$ e $v$ em $T$. Por definição de árvore, o único caminho entre $u$ e $v$ é a aresta $e$. Vamos remover $e$. Logo, teremos dois novos componentes (conexos e acíclicos), que também são árvores, $T'$ e $T''$, onde:
 \begin{align*}
 |V[T']|  &= n'  \text{,}\\
 |V[T'']| &= n'' \quad \text{e} \\
@@ -28,7 +29,5 @@ Ambas $T'$ e $T''$ têm menos vértices que $T$, logo:
 \end{align*}
 
 Não é difícil perceber que $T' \cup T''$ possui $(n' - 1) + (n'' - 1) = n -2$ arestas e, portanto, se adicionarmos $e$ de volta, teremos $n - 1$ arestas.
-
-Como queríamos demonstrar!
 
 \end{proof}

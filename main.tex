@@ -31,18 +31,15 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 
-\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% for the theorems, proofs, definitions
+\theoremstyle{plain}
+\newtheorem*{prop}{Afirmação}
+
+\newcommand{\indbase}{\textbf{\textit{\\Base: }}}
+\newcommand{\indhipo}{\textbf{\textit{\\Hipótese da Indução: }}}
+\newcommand{\indstep}{\textbf{\textit{\\Passo: }}}
+
+\renewcommand\qedsymbol{$\blacksquare$}
 
 \newcommand\floor[1]{\big\lfloor#1\big\rfloor}
 \newcommand\ceil[1]{\big\lceil#1\big\rceil}
@@ -60,6 +57,8 @@ Departamento de Ciência da Computação - IME/USP}
 \begin{center}
 \textbf{\large{Lista 1}}
 \end{center}
+\input{l1/sip-0.11}
 \input{l1/01}
+\input{l1/02}
 
 \end{document}

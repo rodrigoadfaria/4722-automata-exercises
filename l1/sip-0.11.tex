@@ -1,0 +1,17 @@
+
+\noindent \textbf{Sipser 0.11} Encontre o erro na seguinte prova de todos os cavalos são da mesma cor.
+
+
+\begin{prop}
+Em qualquer conjunto de $h$ cavalos, todos os cavalos são da mesma cor.
+\end{prop}
+
+\begin{proof} Por indução sobre $h$.
+
+\indbase Para $h = 1$. Em qualquer conjunto contendo somente um cavalo, todos os cavalos claramente têm a mesma cor.
+
+\indstep Para $k \geq 1$ assuma que a afirmação seja verdadeira para $h = k$ e prove que ela é verdadeira para $h = k + 1$. Tome qualquer conjunto $H$ de $k + 1$ cavalos. Mostramos que todos os cavalos nesse conjunto são da mesma cor. Remova um cavalo desse conjunto para obter o conjunto $H_1$ com apenas $k$ cavalos. Pela hipótese da indução, todos os cavalos em $H_1$ são da mesma cor.
+
+Agora recoloque o cavalo removido e remova um diferente para obter o conjunto $H_2$. Pelo mesmo argumento, todos os cavalos em $H_2$ são da mesma cor. Por conseguinte todos os cavalos em $H$ têm que ser da mesma cor, e a prova está
+completa.
+\end{proof}
