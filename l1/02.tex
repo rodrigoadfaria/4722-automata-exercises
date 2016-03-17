@@ -1,2 +1,15 @@
 
 \noindent \textbf{L1.02} Uma palavra (cadeia) $x$ é dita uma potência de uma palavra $z$ se existir um inteiro $n \geq 0$ tal que $z^n = x$. Duas palavras $x$ e $y$ comutam entre si se $xy = yx$. Prove que duas palavras dadas $x$ e $y$ comutam se e somente se existir uma palavra $z$ da qual $x$ e $y$ são potências. Sugestão: no caso mais difícil, aplique uma indução na soma dos comprimentos de $x$ e $y$.
+
+\textbf{Resposta:} $\Leftarrow$ \textsc{Afirmação:} Se $x = z^i$, $y = z^j$, então $xy = yx \quad \forall i, j \in \N$
+
+Podemos provar essa afirmação da seguinte forma:
+\begin{align*}
+xy = z^iz^j = z^{i+j} \\
+yx = z^jz^i = z^{j+i} \\
+\therefore xy = yx
+\end{align*}
+
+$\Rightarrow$ \textsc{Afirmação:} Se $xy = yx$, então $\exists z | z^i = x, z^j = y \quad \forall i, j \in \N$
+
+\textcolor{red}{TODO}
