@@ -5,11 +5,32 @@
 
 Podemos provar essa afirmação da seguinte forma:
 \begin{align*}
-xy = z^iz^j = z^{i+j} \\
-yx = z^jz^i = z^{j+i} \\
-\therefore xy = yx
+    xy = z^iz^j = z^{i+j} \\
+    yx = z^jz^i = z^{j+i} \\
+    \therefore xy = yx
 \end{align*}
 
 $\Rightarrow$ \textsc{Afirmação:} Se $xy = yx$, então $\exists z | z^i = x, z^j = y \quad \forall i, j \in \N$
 
-\textcolor{red}{TODO}
+\begin{proof} Prova por indução no tamanho da palavra.
+
+\indbase Para $|x| = 0$ ou $|y| = 0$, temos:
+
+Por definição de $\epsilon$ sabemos que $|\epsilon| = 0$.
+
+No caso em que $|x| = 0$, temos que $x = \epsilon = z^0$. O mesmo vale no caso em que $|y| = 0$.
+
+Se $|x| = |y|$, como sabemos que $xy = yx$, então podemos concluir que $x = y$, pois cada carácter da concatenação do lado esquerdo é exatamente igual ao que está na mesma posição do lado direito.
+
+\indhypo Vamos assumir que a afirmação vale para $|x| < |y|$.
+
+\indstep Neste caso, como sabemos que as cadeias comutam, podemos escrever $y = xv$ onde $v \in z^n \quad \forall n \in \N$. Em outras palavras, $x$ é um prefixo de $y$.
+
+Logo:
+\begin{align*}
+    xy   &= yx  \\
+    xxv  &= xvx \\
+    xv   &= vx  \\
+    |xv| &< |xy| \quad (\text{por indução})
+\end{align*}
+\end{proof}
