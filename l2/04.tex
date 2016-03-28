@@ -1,0 +1,25 @@
+
+\noindent \textbf{L2.4} Complete a demonstração do teorema 1.25.\\[3pt]
+\textbf{Resposta:} Vale lembrar, resumidamente, da construção dada na prova do teorema 1.25.
+
+Suponha que $A_1$ e $A_2$ são linguagens reconhecidas por $M_1$ e $M_2$, respectivamente, onde $M_1 = (Q_1, \Sigma, \delta_1, q_1, F_1)$ e $M_2 = (Q_2, \Sigma, \delta_2, q_2, F_2)$.
+
+Construa $M$ para reconhecer $A_1 \cup A_2$, onde $M = (Q, \Sigma, \delta, q_0, F)$.
+\begin{enumerate}[label=\textbf{\arabic*}]
+    \item $Q = Q_1 \times Q_2$.
+    \item $\Sigma$, o alfabeto, é o mesmo em $M_1$ e $M_2$.
+    \item $\delta = $ para cada $(r_1, r_2) \in Q$ e cada $a \in \Sigma$, faça $\delta((r_1, r_2), a) = (\delta_1(r_1, a), \delta_2(r_2, a))$.
+    \item $q_0 = (q_1, q_2)$.
+    \item $F = (F_1 \times Q_2) \cup (Q_1 \times F_2)$.
+\end{enumerate}
+
+\begin{proof}
+Para demonstrar que $M$ reconhece $A_1 \cup A_2$, devemos dividir a prova em duas partes.
+
+\textsc{Afirmação:} Toda palavra pertencente à linguagem reconhecida por esse autômato está presente em $A_1 \cup A_2$.
+
+Tome uma palavra $w$ qualquer reconhecida pelo autômato $M$. Sabe-se que ao transitarmos através de $\delta$ por $M$, a partir do estado inicial $q_0$, existe um passeio $P$ no autômato $M$ que leva a um estado final. Pela construção de $M$, cada estado nesse passeio é rotulado por um par ordenado $(r_1, r_2)$, onde $r_1 \in M_1$ e $r_2 \in M_2$. Se tomarmos o passeio $P_1$ considerando de $P$ apenas as coordenadas $r_1$ do par ordenado, este é equivalente ao passeio dado pelas transições $\delta_1$ na tentativa de reconhecimento de $w$ em $M_1$. Analogamente, podemos tomar o passeio $P_2$, a partir de $P$, considerando apenas as coordenadas $r_2$, o que equivaleria à tentativa de reconhecimento da palavra $w$ em $M_2$. Pela construção de $M$, temos ainda que o estado final do passeio $P$ é rotulado por um par ordenado $(r_1, r_2)$, onde $r_1 \in F_1$ ou $r_2 \in F_2$. Dessa forma, ou $P_1$ ou $P_2$, ou ambos, terminam com um estado final, logo, $w$ pertence ou a $A_1$, ou a $A_2$, ou a ambas, o que é equivalente a dizer que $w$ pertence à $A_1 \cup A_2$.
+
+\textsc{Afirmação:} Toda palavra pertencente à linguagem $A_1 \cup A_2$ é reconhecida pelo autômato construído.
+Tomemos agora uma cadeia $w$ como sendo uma cadeia pertencente a $A_1 \cup A_2$, onde $|w| = m$. Logo, existe um passeio $P_1 = x_0, x_1, \ldots, x_m$ em $M_1$, tal que $x_0 = q_1$ construído a partir de $\delta_1$, ou um passeio $P_2 = z_0, z_1, \ldots, z_m$, construído a partir de $\delta_2$ em $M_2$, tal que $z_0 = q2$, e que $x_m$ ou $z_m$, ou ambos, são estados finais. Como o conjunto de estados $Q$ de $M$ foi construído através do produto cartesiano de $Q_1 \times Q_2$ e a função de transição $\delta((r_1, r_2), a) = (\delta_1(r_1, a), \delta_2(r_2, a))$, para cada par ordenado $(r_1, r_2) \in Q$ e cada $a \in \Sigma$, existe um caminho $P = (x_0, z_0), (x_1, z_1), \ldots, (x_m,z_m)$ em $M$, obtido a partir de $w$, e como $x_m$ ou $z_m$, ou ambos, são estados finais, $(x_m, z_m)$ também é um estado final e, portanto, $M$ reconhece a palavra $w$.
+\end{proof}

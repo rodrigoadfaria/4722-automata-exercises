@@ -1,5 +1,25 @@
 
-\noindent \textbf{L2.2 (Sipser 1.6c)} Dê um DFA/AFD para $A = \{w | w$ possui $0101$ por subcadeia\}.
+\noindent \textbf{L2.2 (Sipser 1.6c)} Dê um DFA/AFD para $A = \{w | w$ possui $0101$ por subcadeia\}.\\[3pt]
+Seja $M = \{Q, \Sigma, \delta, s, F\}$ o AFD da figura \ref{fig:sip1.6c} que reconhece $A$, onde:
+\begin{enumerate}[label=\textbf{\arabic*}]
+    \item $Q = \{q_0, q_1, q_2, q_3, q_4\}$
+    \item $\Sigma = \{0, 1\}$
+    \item $\delta = $
+        \begin{table}[!ht]
+        \centering
+        \rot{\hspace{5 mm}\llap{Estados}}
+        \begin{tabular}{l|l|l}
+                & 0         & 1     \\ \hline
+        $q_0$   & $q_1$     & $q_0$ \\
+        $q_1$   & $q_1$     & $q_2$ \\
+        $q_2$   & $q_3$     & $q_0$ \\
+        $q_3$   & $q_1$     & $q_4$ \\
+        $q_4$   & $q_4$     & $q_4$
+        \end{tabular}
+        \end{table}
+    \item $s = q_0$
+    \item $F = \{q_4\}$
+\end{enumerate}
 
 \begin{figure}[!h]
 \centering
@@ -46,6 +66,6 @@
     \draw (74.1,-11.85) node [above] {$0,\mbox{ }1$};
     \fill [black] (75.42,-16.42) -- (76.3,-16.07) -- (75.49,-15.48);
 \end{tikzpicture}
-\caption{Diagrama de estados do AFD que reconhece $A$.}
+\caption{Diagrama de estados do AFD $M$ que reconhece $A$.}
 \label{fig:sip1.6c}
 \end{figure}
