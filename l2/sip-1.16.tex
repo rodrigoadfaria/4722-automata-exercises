@@ -1,14 +1,29 @@
 
 \noindent \textbf{L2.1 (Sipser 1.16)} Resolva o exercício 1.16.\\[3pt]
-\noindent\textbf{a) Resposta:} Vamos chamar de $M$ o AFN dado na questão. Seja $M_d = \{Q', \Sigma, \delta', q_{0'}, F'\}$ o AFD equivalente à $M$.
+\noindent\textbf{a) Resposta:} Seja $N$ o AFN dado na questão e $A$ a linguagem reconhecida por $N$, onde:\\[6pt]
+\noindent$N = \{Q, \Sigma, \delta, q_{0}, F\}$\\
+$Q = \{1,2\}$\\
+$\Sigma = \{a, b\}$\\
+$q_0 = 1$\\
+$F = \{1\}$\\
+$\delta = $
+\begin{table}[!h]
+\centering
+\rot{\hspace{5 mm}\llap{Estados}}
+\begin{tabular}{l|l|l}
+        & a          & b        \\ \hline
+1       & \{1, 2\}   & \{2\}    \\
+2       & \{\}       & \{1\}    \\
+\end{tabular}
+\end{table}
 
-\noindent\textit{Estados de $M_d$:} $Q' = \{\{\}, \{1\}, \{2\}, \{1,2\} \}$.
+Agora, vamos construir um AFD $M = \{Q', \Sigma, \delta', q_{0'}, F'\}$, equivalente à $N$, que reconhece $A$.
 
-\noindent\textit{Estado inicial:} $q_{0'} = E(\{1\}) = \{1\}$. É o conjunto de estados que são atingíveis a partir de $\{1\}$ viajando por setas $\epsilon$, mais o próprio $\{1\}$.
-
-\noindent\textit{Estados de aceitação:} $F' = \{\{1\}, \{1,2\}\}$. Aqueles que contêm um estado de aceitação de $M$.
-
-\noindent\textit{Função de transição:} $\delta' = $
+\noindent$Q' = \{\{\}, \{1\}, \{2\}, \{1,2\} \}$\\
+$\Sigma = \{a, b\}$\\
+$q_{0'} = E(\{1\}) = \{1\}$\\
+$F' = \{\{1\}, \{1,2\}\}$\\
+$\delta' = $
 \begin{table}[!h]
 \centering
 \rot{\hspace{5 mm}\llap{Estados}}
@@ -19,11 +34,9 @@
 \{2\}    & \{\}      & \{1\}    \\
 \{1,2\}  & \{1,2\}   & \{1,2\}
 \end{tabular}
-\caption{Função de transição de $M_d$.}\vspace*{0.2cm}
-\label{tbl:sip1.16a}
 \end{table}
 
-\begin{figure}[!h]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[scale=0.2]
 \tikzstyle{every node}+=[inner sep=0pt]
@@ -58,20 +71,36 @@
 \draw [black] (10.5,-19.6) -- (14.6,-19.6);
 \fill [black] (14.6,-19.6) -- (13.8,-19.1) -- (13.8,-20.1);
 \end{tikzpicture}
-\caption{Diagrama de estados para o AFD $M_d$.}
+\caption{Diagrama de estados para o AFD $M$.}
 \label{fig:sip1.16a}
 \end{figure}
 
 % item b) %
-\noindent\textbf{b) Resposta:} Vamos chamar de $N$ o AFN dado na questão. Seja $N_d = \{Q', \Sigma, \delta', q_{0'}, F'\}$ o AFD equivalente à $N$.
+\noindent\textbf{b) Resposta:} Seja $N$ o AFN dado na questão e $A$ a linguagem reconhecida por $N$, onde:\\[6pt]
+\noindent$N = \{Q, \Sigma, \delta, q_{0}, F\}$\\
+$Q = \{1, 2, 3\}$\\
+$\Sigma = \{a, b\}$\\
+$q_0 = 1$\\
+$F = \{2\}$\\
+$\delta = $
+\begin{table}[!h]
+\centering
+\rot{\hspace{5 mm}\llap{Estados}}
+\begin{tabular}{l|l|l|l}
+     & a        & b         & $\epsilon$ \\ \hline
+1    & \{3\}    & \{\}      & \{2\}    \\
+2    & \{1\}    & \{\}      & \{\}    \\
+3    & \{2\}    & \{2, 3\}  & \{\}    \\
+\end{tabular}
+\end{table}
 
-\noindent\textit{Estados de $N_d$:} $Q' = \{\{\}, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\} \}$.
+Agora, vamos construir um AFD $M = \{Q', \Sigma, \delta', q_{0'}, F'\}$, equivalente à $N$, que reconhece $A$.
 
-\noindent\textit{Estado inicial:} $q_{0'} = E(\{1\}) = \{1,2\}$.
-
-\noindent\textit{Estados de aceitação:} $F' = \{\{2\}, \{1,2\}, \{2,3\}, \{1,2,3\} \}$. Aqueles que contêm um estado de aceitação de $N$.
-
-\noindent\textit{Função de transição:} $\delta' = $
+\noindent$Q' = \{\{\}, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\} \}$\\
+$\Sigma = \{a, b\}$\\
+$q_{0'} = E(\{1\}) = \{1,2\}$\\
+$F' = \{\{2\}, \{1,2\}, \{2,3\}, \{1,2,3\} \}$\\
+$\delta' = $
 \begin{table}[!h]
 \centering
 \rot{\hspace{5 mm}\llap{Estados}}
@@ -86,11 +115,9 @@
 \{2,3\}     & \{1,2\}       & \{2,3\}   \\
 \{1,2,3\}   & \{1,2,3\}     & \{2,3\}
 \end{tabular}
-\caption{Função de transição de $N_d$.}\vspace*{0.2cm}
-\label{tbl:sip1.16b}
 \end{table}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \begin{tikzpicture}[scale=0.2]
 \tikzstyle{every node}+=[inner sep=0pt]
@@ -129,7 +156,7 @@
 \fill [black] (20.23,-21.04) -- (20.69,-21.87) -- (21.17,-20.99);
 \draw (33.49,-27.3) node [above] {$a$};
 \end{tikzpicture}
-\caption{Diagrama de estados para o AFD $N_d$.}
+\caption{Diagrama de estados para o AFD $M$.}
 \label{fig:sip1.16b}
 \end{figure}
 
