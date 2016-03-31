@@ -10,16 +10,16 @@ $\delta = $
 \begin{table}[!h]
 \centering
 \rot{\hspace{5 mm}\llap{Estados}}
-\begin{tabular}{l|l|l}
+\begin{tabular}{c|c|c}
         & a          & b        \\ \hline
 1       & \{1, 2\}   & \{2\}    \\
-2       & \{\}       & \{1\}    \\
+2       & $\emptyset$       & \{1\}    \\
 \end{tabular}
 \end{table}
 
 Agora, vamos construir um AFD $M = \{Q', \Sigma, \delta', q_{0'}, F'\}$, equivalente à $N$, que reconhece $A$.
 
-\noindent$Q' = \{\{\}, \{1\}, \{2\}, \{1,2\} \}$\\
+\noindent$Q' = \{\emptyset, \{1\}, \{2\}, \{1,2\} \}$\\
 $\Sigma = \{a, b\}$\\
 $q_{0'} = E(\{1\}) = \{1\}$\\
 $F' = \{\{1\}, \{1,2\}\}$\\
@@ -27,12 +27,12 @@ $\delta' = $
 \begin{table}[!h]
 \centering
 \rot{\hspace{5 mm}\llap{Estados}}
-\begin{tabular}{l|l|l}
-         & a         & b        \\ \hline
-\{\}     & \{\}      & \{\}     \\
-\{1\}    & \{1,2\}   & \{2\}    \\
-\{2\}    & \{\}      & \{1\}    \\
-\{1,2\}  & \{1,2\}   & \{1,2\}
+\begin{tabular}{c|c|c}
+         & a        & b                                 \\ \hline
+$\emptyset$         & $\emptyset$       & $\emptyset$   \\
+\{1\}               & \{1,2\}           & \{2\}         \\
+\{2\}               & $\emptyset$       & \{1\}         \\
+\{1,2\}             & \{1,2\}           & \{1,2\}
 \end{tabular}
 \end{table}
 
@@ -44,7 +44,7 @@ $\delta' = $
 \draw (17.6,-19.6) node {$\{1\}$};
 \draw [black] (17.6,-19.6) circle (2.4);
 \draw [black] (47.5,-36) circle (3);
-\draw (47.5,-36) node {$\{\}$};
+\draw (47.5,-36) node {$\emptyset$};
 \draw [black] (17.6,-36) circle (3);
 \draw (17.6,-36) node {$\{2\}$};
 \draw [black] (47.5,-19.6) circle (3);
@@ -86,17 +86,17 @@ $\delta = $
 \begin{table}[!h]
 \centering
 \rot{\hspace{5 mm}\llap{Estados}}
-\begin{tabular}{l|l|l|l}
-     & a        & b         & $\epsilon$ \\ \hline
-1    & \{3\}    & \{\}      & \{2\}    \\
-2    & \{1\}    & \{\}      & \{\}    \\
-3    & \{2\}    & \{2, 3\}  & \{\}    \\
+\begin{tabular}{c|c|c|c}
+     & a        & b                 & $\epsilon$    \\ \hline
+1    & \{3\}    & $\emptyset$       & \{2\}         \\
+2    & \{1\}    & $\emptyset$       & $\emptyset$   \\
+3    & \{2\}    & \{2, 3\}          & $\emptyset$   \\
 \end{tabular}
 \end{table}
 
 Agora, vamos construir um AFD $M = \{Q', \Sigma, \delta', q_{0'}, F'\}$, equivalente à $N$, que reconhece $A$.
 
-\noindent$Q' = \{\{\}, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\} \}$\\
+\noindent$Q' = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\} \}$\\
 $\Sigma = \{a, b\}$\\
 $q_{0'} = E(\{1\}) = \{1,2\}$\\
 $F' = \{\{2\}, \{1,2\}, \{2,3\}, \{1,2,3\} \}$\\
@@ -104,16 +104,16 @@ $\delta' = $
 \begin{table}[!h]
 \centering
 \rot{\hspace{5 mm}\llap{Estados}}
-\begin{tabular}{l|l|l}
-            & a             & b         \\ \hline
-\{\}        & \{\}          & \{\}      \\
-\{1\}       & \{3\}         & \{\}      \\
-\{2\}       & \{1,2\}       & \{\}      \\
-\{3\}       & \{2\}         & \{2,3\}   \\
-\{1,2\}     & \{1,2,3\}     & \{\}      \\
-\{1,3\}     & \{2,3\}       & \{2,3\}   \\
-\{2,3\}     & \{1,2\}       & \{2,3\}   \\
-\{1,2,3\}   & \{1,2,3\}     & \{2,3\}
+\begin{tabular}{c|c|c}
+                & a             & b             \\ \hline
+$\emptyset$     & $\emptyset$   & $\emptyset$   \\
+\{1\}           & \{3\}         & $\emptyset$     \\
+\{2\}           & \{1,2\}       & $\emptyset$     \\
+\{3\}           & \{2\}         & \{2,3\}       \\
+\{1,2\}         & \{1,2,3\}     & $\emptyset$     \\
+\{1,3\}         & \{2,3\}       & \{2,3\}       \\
+\{2,3\}         & \{1,2\}       & \{2,3\}       \\
+\{1,2,3\}       & \{1,2,3\}     & \{2,3\}
 \end{tabular}
 \end{table}
 
@@ -128,7 +128,7 @@ $\delta' = $
 \draw (47.5,-36) node {${2,3}$};
 \draw [black] (47.5,-36) circle (2.4);
 \draw [black] (17.6,-36) circle (3);
-\draw (17.6,-36) node {$\{\}$};
+\draw (17.6,-36) node {$\emptyset$};
 \draw [black] (47.5,-19.6) circle (3);
 \draw (47.5,-19.6) node {$\{1,2,3\}$};
 \draw [black] (47.5,-19.6) circle (2.4);
