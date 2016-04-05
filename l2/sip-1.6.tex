@@ -120,18 +120,92 @@ Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM
 \begin{align*}
     \deltaM(q_0, w) &= \deltaM(q_0, au)\\
                     &= \delta(\deltaM(q_0, u), a)\\
-                    &= \deltaM(q_0, a)\\
+                    &= \delta(q_0, a)\\
                     &= q_0
 \end{align*}
 Portanto, $\deltaM(q_0, w) = q_0 \iff w \in L(q_0)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\item $\deltaM(q_0, u) = q_0$ e $a = 0$
-\item $\deltaM(q_0, u) = q_1$ e $a = 0$
-\item $\deltaM(q_0, u) = q_1$ e $a = 1$
-\item $\deltaM(q_0, u) = q_2$ e $a = 0$
-\item $\deltaM(q_0, u) = q_2$ e $a = 1$
-\item $\deltaM(q_0, u) = q_3$ e $a = 0$
-\item $\deltaM(q_0, u) = q_3$ e $a = 1$
-\item $\deltaM(q_0, u) = q_4$ e $a = 0$ ou $a = 1$
+\item $\deltaM(q_0, u) = q_0$ e $a = 0$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_0 \iff u \in L(q_0)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \delta(q_0, a)\\
+                    &= q_1
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_1 \iff w \in L(q_1)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\deltaM(q_0, u) = q_1$ e $a = 0$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_1 \iff u \in L(q_1)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \delta(q_1, a)\\
+                    &= q_1
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_1 \iff w \in L(q_1)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\deltaM(q_0, u) = q_1$ e $a = 1$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_1 \iff u \in L(q_1)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \delta(q_1, a)\\
+                    &= q_2
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_2 \iff w \in L(q_2)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\deltaM(q_0, u) = q_2$ e $a = 0$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_2 \iff u \in L(q_2)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \delta(q_2, a)\\
+                    &= q_3
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_3 \iff w \in L(q_3)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\deltaM(q_0, u) = q_2$ e $a = 1$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_2 \iff u \in L(q_2)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \delta(q_2, a)\\
+                    &= q_0
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_0 \iff w \in L(q_0)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\deltaM(q_0, u) = q_3$ e $a = 0$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_3 \iff u \in L(q_3)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \delta(q_3, a)\\
+                    &= q_1
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_1 \iff w \in L(q_1)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\deltaM(q_0, u) = q_3$ e $a = 1$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_3 \iff u \in L(q_3)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \delta(q_3, a)\\
+                    &= q_4
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_4 \iff w \in L(q_4)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\deltaM(q_0, u) = q_4$ e $a = 0$ ou $a = 1$\\
+Esse caso é trivialmente verdade pois, nesse ponto, já sabemos que $u$ contém a subcadeia 0101 e, não importa o símbolo $a$ lido, temos que $\deltaM(q_0, u) = q_4 \iff u \in L(q_4)$ e $\deltaM(q_0, w) = q_4 \iff w \in L(q_4)$.
 \end{enumerate}
+
+Sendo assim, podemos concluir que o autômato $M$ da Figura \ref{fig:sip1.6c} está correto, pois $\deltaM(q_0, w) \cap F \neq \emptyset \iff w \in A$.
 \end{proof}
