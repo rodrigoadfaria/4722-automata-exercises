@@ -1,5 +1,7 @@
 
 \noindent \textbf{L2.2 (Sipser 1.6c)} Dê um DFA/AFD para $A = \{w \ |\ w$ possui $0101$ por subcadeia\}. Considere o alfabeto $\Sigma = \{0, 1\}$.\\[3pt]
+\textbf{Resposta: } Para este exercício, utilizei as referências em \cite{illinois3}, \cite{illinois2} e \cite{hopcroft2006}.
+
 Seja $M = \{Q, \Sigma, \delta, s, F\}$ o AFD da figura \ref{fig:sip1.6c} que reconhece $A$, onde:
 \begin{enumerate}[label=\textbf{\arabic*}]
     \item $Q = \{q_0, q_1, q_2, q_3, q_4\}$
@@ -21,7 +23,7 @@ Seja $M = \{Q, \Sigma, \delta, s, F\}$ o AFD da figura \ref{fig:sip1.6c} que rec
     \item $F = \{q_4\}$
 \end{enumerate}
 
-\begin{figure}[!h]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[scale=0.2]
     \tikzstyle{every node}+=[inner sep=0pt]
@@ -105,7 +107,7 @@ Note que $\delta(q_0, w) = q \iff w \in L(q)$, ou seja, o autômato termina em u
 \begin{proof} Vamos provar a afirmação por indução em $|w|$.
 
 \indbase $|w| = 0$\\[3pt]
-Nesse caso, $w = \epsilon$ e pela definição de $\deltaM$ temos que $\deltaM(q_0, w) = q_0$ e, portanto, $w \in L(q_0)$.\\
+Nesse caso, $w = \epsilon$ e, pela definição de $\deltaM$, temos que $\deltaM(q_0, w) = q_0$ e, portanto, $w \in L(q_0)$.\\
 Por outro lado, se $w \in L(q_0)$, então, pela mesma definição de $\deltaM$, temos que $\deltaM(q_0, w) = q_0$.
 
 \indhypo Suponha que a afirmação é verdadeira para qualquer cadeia $w$, tal que $|w| < n$.

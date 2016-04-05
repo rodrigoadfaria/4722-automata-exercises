@@ -5,13 +5,14 @@
 
 \documentclass[12pt]{article}
 
-\usepackage[latin1,utf8]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
+\usepackage{csquotes}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{clrscode3e} % for the pseudocode
-\usepackage{graphicx}
+\usepackage{graphicx,url}
 \usepackage{float}
 \usepackage{framed}
 \usepackage{caption}
@@ -21,11 +22,14 @@
 % for the graphs %
 \usepackage{tikz}
 \usetikzlibrary{trees}
-\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{shapes,decorations}
 \usepackage{verbatim}
 
 \usepackage{tabto}
 \usepackage{enumitem}
+
+\usepackage[backend=bibtex,bibencoding=ascii,sorting=none]{biblatex}
+\addbibresource{sources.bib}
 
 \graphicspath{ {imgs/} }
 
@@ -72,4 +76,5 @@ Departamento de Ciência da Computação - IME/USP}
 \input{l2/03}
 \input{l2/04}
 
+\printbibliography
 \end{document}
