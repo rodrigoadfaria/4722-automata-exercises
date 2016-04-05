@@ -1,5 +1,5 @@
 
-\noindent \textbf{L2.2 (Sipser 1.6c)} Dê um DFA/AFD para $A = \{w | w$ possui $0101$ por subcadeia\}.\\[3pt]
+\noindent \textbf{L2.2 (Sipser 1.6c)} Dê um DFA/AFD para $A = \{w \ |\ w$ possui $0101$ por subcadeia\}. Considere o alfabeto $\Sigma = \{0, 1\}$.\\[3pt]
 Seja $M = \{Q, \Sigma, \delta, s, F\}$ o AFD da figura \ref{fig:sip1.6c} que reconhece $A$, onde:
 \begin{enumerate}[label=\textbf{\arabic*}]
     \item $Q = \{q_0, q_1, q_2, q_3, q_4\}$
@@ -69,3 +69,69 @@ Seja $M = \{Q, \Sigma, \delta, s, F\}$ o AFD da figura \ref{fig:sip1.6c} que rec
 \caption{Diagrama de estados do AFD $M$ que reconhece $A$.}
 \label{fig:sip1.6c}
 \end{figure}
+
+Agora, precisamos mostrar que o AFD $M$ reconhece a linguagem $A$, ou seja, para todo $w \in \Sigma^*$, $w \in L(M) \iff w \in A$.
+
+Sem perda de generalidade, vamos assumir que $w$ é da forma $au$. Vamos definir $\forall w \in \Sigma^*$:
+\begin{align*}
+\deltaM(q_0, w) = \begin{cases}
+                    q_0, \quad \text{se}\ w = \epsilon \\
+                    \delta(q_0, w), \quad \text{se}\ w \in \Sigma \\
+                    \hat{\delta}_M(q, u), \quad \text{se}\ w = au
+                  \end{cases}
+\end{align*}
+\begin{align*}
+    \text{onde} \ a \in \Sigma, |u| > 0 \ \text{e} \ q = \delta(q_0, a).
+\end{align*}
+
+Note que $\delta(q_0, w) = q \iff w \in L(q)$, ou seja, o autômato termina em um estado $q$ dado uma cadeia $w$, se e somente se, $w$ satisfaz as propriedades para o estado $q$. Sendo assim, vamos definir:
+\begin{itemize}[label={}]
+    \item $L(q_0) = $ \{$w \in \Sigma^* \ |\ $ 0101 não é subcadeia de $w$ e $w$ não termina com 0, 01 ou 010.\}
+    \item $L(q_1) = $ \{$w \in \Sigma^* \ |\ $ 0101 não é subcadeia de $w$ e $w$ não termina com 01 ou 010, mas termina com 0.\}
+    \item $L(q_2) = $ \{$w \in \Sigma^* \ |\ $ 0101 não é subcadeia de $w$ e $w$ não termina com 010, mas termina com 01.\}
+    \item $L(q_3) = $ \{$w \in \Sigma^* \ |\ $ 0101 não é subcadeia de $w$, mas $w$ termina com 010.\}
+    \item $L(q_4) = $ \{$w \in \Sigma^* \ |\ $ 0101 é subcadeia de $w$.\}
+\end{itemize}
+
+\textsc{Afirmação:} $L(M) = \{w \in \Sigma^* \ |\ w$ possui $0101$ por subcadeia\}, de forma tal que as propriedades (a), (b), (c), (d) e (e) valem $\forall w \in \Sigma^*$:
+\begin{enumerate}[label=(\alph*)]
+    \item $\deltaM(q_0, w) = q_0 \iff w \in L(q_0)$,
+    \item $\deltaM(q_0, w) = q_1 \iff w \in L(q_1)$,
+    \item $\deltaM(q_0, w) = q_2 \iff w \in L(q_2)$,
+    \item $\deltaM(q_0, w) = q_3 \iff w \in L(q_3)$ e
+    \item $\deltaM(q_0, w) = q_4 \iff w \in L(q_4)$.
+\end{enumerate}
+
+\begin{proof} Vamos provar a afirmação por indução em $|w|$.
+
+\indbase $|w| = 0$\\[3pt]
+Nesse caso, $w = \epsilon$ e pela definição de $\deltaM$ temos que $\deltaM(q_0, w) = q_0$ e, portanto, $w \in L(q_0)$.\\
+Por outro lado, se $w \in L(q_0)$, então, pela mesma definição de $\deltaM$, temos que $\deltaM(q_0, w) = q_0$.
+
+\indhypo Suponha que a afirmação é verdadeira para qualquer cadeia $w$, tal que $|w| < n$.
+
+\indstep Seja $w \in \Sigma^*$ e $|w| = n$. Lembrando que $w = au$, $a \in \Sigma$, $|u| > 0$ e $u \in \Sigma^{n - 1}$.
+
+Agora, precisamos mostrar que a afirmação também vale para todas as possibilidades de transição de $\deltaM(q_0, u)$ e $a$.
+
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+\item $\deltaM(q_0, u) = q_0$ e $a = 1$\\
+Temos que $|u| < n$ e, por hipótese de indução, podemos concluir que $\deltaM(q_0, u) = q_0 \iff u \in L(q_0)$. Logo:
+\begin{align*}
+    \deltaM(q_0, w) &= \deltaM(q_0, au)\\
+                    &= \delta(\deltaM(q_0, u), a)\\
+                    &= \deltaM(q_0, a)\\
+                    &= q_0
+\end{align*}
+Portanto, $\deltaM(q_0, w) = q_0 \iff w \in L(q_0)$.
+
+\item $\deltaM(q_0, u) = q_0$ e $a = 0$
+\item $\deltaM(q_0, u) = q_1$ e $a = 0$
+\item $\deltaM(q_0, u) = q_1$ e $a = 1$
+\item $\deltaM(q_0, u) = q_2$ e $a = 0$
+\item $\deltaM(q_0, u) = q_2$ e $a = 1$
+\item $\deltaM(q_0, u) = q_3$ e $a = 0$
+\item $\deltaM(q_0, u) = q_3$ e $a = 1$
+\item $\deltaM(q_0, u) = q_4$ e $a = 0$ ou $a = 1$
+\end{enumerate}
+\end{proof}
