@@ -1,3 +1,32 @@
 
-\noindent \textbf{L2.3} Dada uma linguagem $L$, seja $Pref(L) = \{x |$ existe palavra $y$ tal que $xy$ está em $L$\}, $Suf(L) = \{y |$ existe palavra $x$ tal que $xy$ está em $L$\}, $Fat(L) = \{y |$ existem palavras $x$ e $z$ tais que $xyz$ estão em $L$\}.\\
-Demonstre que se $L$ é regular, então $Pref(L)$, $Suf(L)$ e $Fat(L)$ também o são. Sugestão: Observe que $Fat(L) = Suf(Pref(L))$.\\[3pt]
+\noindent \textbf{L2.3} Dada uma linguagem $L$, seja $pref(L) = \{x \ |$ existe palavra $y$ tal que $xy$ está em $L$\}, $suf(L) = \{y \ |$ existe palavra $x$ tal que $xy$ está em $L$\}, $fat(L) = \{y \ |$ existem palavras $x$ e $z$ tais que $xyz$ estão em $L$\}.\\
+Demonstre que se $L$ é regular, então $pref(L)$, $suf(L)$ e $fat(L)$ também o são. Sugestão: Observe que $fat(L) = suf(pref(L))$.\\[3pt]
+\textbf{Resposta:} Vamos mostrar a construção de um autômato para cada linguagem para mostrar que ela é regular. Vale lembrar que, por definição, uma linguagem é regular se existe um autômato finito que a reconhece.
+
+\textsc{Afirmação:} Se $L$ é uma linguagem regular, então $pref(L)$ também o é.
+\begin{proof}
+Como $L$ é regular, existe um autômato $M = (Q, \Sigma, \delta, q_0, F)$ que reconhece $L$. Vamos, então, construir um autômato $N = (Q, \Sigma, \delta, q_0, F')$ que reconhece $pref(L)$.
+
+Ou seja, o autômato $N$ que reconhece $pref(L)$ apenas difere do autômato $M$ original no conjunto de estados de aceitação. Logo:
+\begin{align*}
+    F' = \{q \in Q: \ \exists q_f \in F \ \text{e} \ w \in \Sigma^* \text{\ tal que\ } \hat{\delta}(q, w) = q_f \}
+\end{align*}
+
+Em outras palavras, $F'$ é o subconjunto dos estados em $Q$ que conseguem atingir algum estado de $F$.
+
+Para que a demonstração seja completa, temos que mostrar que $\forall w \in \Sigma^*, w \in pref(L) \iff N \ \text{aceita} \ w$. (não consegui concluir a tempo)
+\end{proof}
+
+\textsc{Afirmação:} Se $L$ é uma linguagem regular, então $suf(L)$ também o é.
+\begin{proof}
+Como $L$ é regular, existe um autômato $M = (Q, \Sigma, \delta, q_0, F)$ que reconhece $L$. Vamos, então, construir um autômato $N = (Q', \Sigma, \delta', q_{0'}, F)$ que reconhece $suf(L)$, onde:
+
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item $Q' = Q \cup \{q_{0'}\}$ e $q_{0'} \notin Q$
+    \item $q_{0'}$ é o novo estado inicial
+    \item $\delta'$ é a antiga função de transição, além de transições $\epsilon$ a partir de $q_{0'}$ para todos os outros estados de $M$
+\end{enumerate}
+
+Para que a demonstração seja completa, temos que mostrar que $\forall w \in \Sigma^*, w \in suf(L) \iff N \ \text{aceita} \ w$. (não consegui concluir a tempo)
+\end{proof}
+\textsc{Afirmação:} Se $L$ é uma linguagem regular, então $fat(L)$ também o é.\\[6pt]
