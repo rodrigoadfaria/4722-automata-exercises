@@ -1,0 +1,42 @@
+
+\noindent \textbf{L3.1 (Sipser 1.46)} Prove que as seguintes linguagens não são regulares.
+\begin{enumerate}[label={\textbf{\alph*.}}]
+    \item $L_a = \{0^n1^m0^n \ |\ m, n \geq 0\}$\\[3pt]
+    \textbf{Resposta:} Vamos usar o lema do bombeamento para mostrar que $L_a$ não é regular. A prova é por contradição.
+    
+    Suponha o contrário, ou seja, que $L_a$ é regular. Seja $p$ o comprimento de bombeamento dado pelo lema do bombeamento. Seja $s$ a cadeia $s = 0^p1^{p+1}0^p$. Como $s \in L_a$ e $|s| \geq p$, o lema do bombeamento garante que $s$ pode ser dividida em três partes $s = xyz$, onde, para qualquer $i \geq 0$, $xy^iz \in L_a$. Vamos mostrar que isso é impossível.
+    
+    A condição 3 do lema do bombeamento diz que $|xy| \leq p$ e, por esta razão, $y$ contém apenas 0s. Vamos tomar a cadeia $s' = xyyz$, onde $y = 0^a$ e $a \geq 1$. Neste caso, teremos mais 0s no início da cadeia do que no fim e, portanto, $s' \notin L_a$, o que é uma contradição da condição 1 do lema do bombeamento.
+    
+    Portanto, podemos concluir que $L_a$ não é regular.
+    
+    \item $L_b = \{0^m1^n \ |\ m \neq n\}$\\[3pt]
+    \textbf{Resposta:} Há a resposta no livro do Sipser.
+    
+    \item $L_c = \{w \ |\ w \in \{0, 1\}^*$ não é um palíndromo$\}$\\[3pt]
+    \textbf{Resposta:} Tomei como base a questão anterior no livro \cite{sipser:2006}.
+    
+    Um palíndromo é uma cadeia que tem a mesma leitura da esquerda para a direita e vice-versa. Logo, 
+    $L_c = \{w \ |\ w \in \{0, 1\}^* e\ w \neq w^R\}$.
+    
+    Vamos usar o lema do bombeamento para mostrar que $L_c$ não é regular. A prova é por contradição.
+    
+    Suponha o contrário, ou seja, que $L_c$ é regular. Seja $p$ o comprimento de bombeamento dado pelo lema do bombeamento. Seja a cadeia $s = 0^p10^{p+p!}$. Como $s \in L_c$ e $|s| \geq p$, o lema do bombeamento garante que $s$ pode ser dividida em três partes $s = xyz$ com $x = 0^a$, $y = 0^b$ e $z = 0^c10^{p+p!}$, onde, $b \geq 1$ e $a + b + c = p$. Vamos mostrar que isso é impossível.
+    
+    Seja a cadeia $s' = xy^{i+1}z$, onde $i = \frac{p!}{b}$. Então, temos que:
+    \begin{align*}
+        y^{i+1} = 0^{b^{(\frac{p!}{b})}} 0^b = 0^{b{(\frac{p!}{b})}} 0^b = 0^{p!}0^b = 0^{b + p!}
+    \end{align*}
+    Logo, $xyz = 0^a0^{b + p!}0^c10^{p + p!} = 0^{a + b + p! + c}10^{b + p!}$. Como $a + b + c = p$, temos que $xyz = 0^{p + p!}10^{p + p!}$ e, sendo assim, $xyz \notin L_c$.
+    
+    Portanto, podemos concluir que $L_c$ não é regular.
+    
+    \item $L_d = \{wtw \ |\ w, t \in \{0, 1\}^+\}$\\[3pt]
+    \textbf{Resposta:} Vamos usar o lema do bombeamento para mostrar que $L_d$ não é regular. A prova é por contradição.
+    
+    Suponha o contrário, ou seja, que $L_d$ é regular. Seja $p$ o comprimento de bombeamento dado pelo lema do bombeamento. Seja a cadeia $s = 0^p10^p$, onde $p \geq 1$. Como $s \in L_d$ e $|s| \geq p$, o lema do bombeamento garante que $s$ pode ser dividida em três partes $s = xyz$, onde, para qualquer $i \geq 0$, $xy^iz \in L_d$. Vamos mostrar que isso é impossível.
+    
+    A condição 3 do lema do bombeamento diz que $|xy| \leq p$ e, por esta razão, $y$ contém apenas 0s. Vamos tomar a cadeia $s' = xyyz$. Neste caso, teremos um número maior de 0s no início da cadeia do que no fim e, portanto, $s' \notin L_d$, o que é uma contradição da condição 1 do lema do bombeamento.
+    
+    Portanto, podemos concluir que $L_d$ não é regular.
+\end{enumerate}
