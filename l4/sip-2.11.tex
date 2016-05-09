@@ -1,0 +1,33 @@
+
+\noindent \textbf{L4.3 (Sipser 2.11)} Converta a GLC $G_4$ do exercício 2.1 para um $AP$ equivalente, usando o teorema 2.20.
+\begin{align*}
+    E &\rightarrow E + T \ |\ T \\
+    T &\rightarrow T \times F \ |\ F \\
+    F &\rightarrow (E) \ |\ a \\
+\end{align*}
+
+\textbf{Resposta: TODO}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (35.2,-3.6) circle (3);
+\draw (35.2,-3.6) node {$q_{start}$};
+\draw [black] (35.2,-14.4) circle (3);
+\draw [black] (35.2,-26.8) circle (9);
+\draw (35.2,-26.8) node {$q_{loop}$};
+\draw [black] (35.2,-56.6) circle (3);
+\draw (35.2,-56.6) node {$q_{accept}$};
+\draw [black] (35.2,-56.6) circle (2.4);
+\draw [black] (48.8,-26.8) circle (3);
+\draw [black] (62.3,-26.8) circle (3);
+\draw [black] (28.4,-3.6) -- (32.2,-3.6);
+\fill [black] (32.2,-3.6) -- (31.4,-3.1) -- (31.4,-4.1);
+\draw [black] (35.2,-6.6) -- (35.2,-11.4);
+\fill [black] (35.2,-11.4) -- (35.7,-10.6) -- (34.7,-10.6);
+\draw (35.7,-9) node [right] {$\epsilon,\mbox{ }\epsilon\mbox{ }\rightarrow\mbox{ }\$$};
+\draw [black] (35.2,-17.4) -- (35.2,-23.8);
+\fill [black] (35.2,-23.8) -- (35.7,-23) -- (34.7,-23);
+\draw (35.7,-20.6) node [right] {$\epsilon,\mbox{ }\epsilon\mbox{ }\rightarrow\mbox{ }E$};
+\end{tikzpicture}
+\end{center}

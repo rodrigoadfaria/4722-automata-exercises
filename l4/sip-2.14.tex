@@ -1,0 +1,54 @@
+
+\noindent \textbf{L4.4 (Sipser 2.14)} Converta a seguinte GLC numa GLC equivalente na forma normal de Chomsky,
+usando o procedimento dado no Teorema 2.9.
+\begin{align*}
+    A &\rightarrow BAB \ |\ B \ |\ \epsilon \\
+    B &\rightarrow 00 \ |\ \epsilon
+\end{align*}
+\textbf{Resposta: } Seguem os passos de acordo com o teorema.
+\begin{enumerate}
+    \item Nova variável inicial
+    \begin{align*}
+        S_0 &\rightarrow A \\
+        A &\rightarrow BAB \ |\ B \ |\ \epsilon \\
+        B &\rightarrow 00 \ |\ \epsilon
+    \end{align*}
+
+    \item Removendo a regra $A \rightarrow \epsilon$
+    \begin{align*}
+        S_0 &\rightarrow A \ |\ \epsilon \\
+        A &\rightarrow BAB \ |\ B \ |\ BB \\
+        B &\rightarrow 00 \ |\ \epsilon
+    \end{align*}
+
+    \item Removendo a regra $B \rightarrow \epsilon$
+    \begin{align*}
+        S_0 &\rightarrow A \ |\ \epsilon \\
+        A &\rightarrow BAB \ |\ B \ |\ BB \ |\ AB \ |\ BA \\
+        B &\rightarrow 00
+    \end{align*}
+
+    \item Removendo a regra unitária $A \rightarrow B$
+    \begin{align*}
+        S_0 &\rightarrow A \ |\ \epsilon \\
+        A &\rightarrow BAB \ |\ 00 \ |\ BB \ |\ AB \ |\ BA \\
+        B &\rightarrow 00
+    \end{align*}
+
+    \item Removendo a regra unitária $S_0 \rightarrow a$
+    \begin{align*}
+        S_0 &\rightarrow BAB \ |\ 00 \ |\ BB \ |\ AB \ |\ BA  \ |\ \epsilon \\
+        A &\rightarrow BAB \ |\ 00 \ |\ BB \ |\ AB \ |\ BA \\
+        B &\rightarrow 00
+    \end{align*}
+
+    \item Simplificando, tomando $X \rightarrow AB$ e $Y \rightarrow 0$
+    \begin{align*}
+        S_0 &\rightarrow BX \ |\ YY \ |\ BB \ |\ AB \ |\ BA  \ |\ \epsilon \\
+        A &\rightarrow BX \ |\ YY \ |\ BB \ |\ AB \ |\ BA \\
+        B &\rightarrow YY \\
+        X &\rightarrow AB \\
+        Y &\rightarrow 0
+    \end{align*}
+
+\end{enumerate}
