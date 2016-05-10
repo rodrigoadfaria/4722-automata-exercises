@@ -1,3 +1,22 @@
 
-\noindent \textbf{L4.5} \\[3pt]
-\textbf{Resposta: TODO}
+\noindent \textbf{L4.5 (Sipser 2.25)} Para qualquer linguagem $A$, seja $SUFIXO(A) = \{v \ |\ uv \in A$ para alguma cadeia $u\}$. Mostre que a classe de linguagens livres-do-contexto é fechada sob a operação $SUFIXO$.\\[3pt]
+\textbf{Resposta: } Seja $A$ uma linguagem livre de contexto. Existe um autômato a pilha (AP) $P = (Q_1, \Sigma, \Gamma, \delta_1, q_1, F_1)$ que aceita as cadeias de $A$. Vamos construir um novo autômato a pilha $M = (Q, \Sigma, \Gamma, \delta, q, F)$ que reconhece a linguagem $SUFIXO(A)$. Para tanto, precisamos, inicialmente, criar uma cópia de $P$, digamos, $P' = (Q_{1'}, \Sigma, \Gamma, \delta_{1'}, q_{1'}, F_{1'})$. Devemos, também, alterar as entradas das transições de $\delta_1$ para vazio, ou seja, para cada transição $a, b \rightarrow c$ de $\delta_1$, teremos $\epsilon, b \rightarrow c$.
+
+Logo, podemos escrever $M$ formalmente como:
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item $Q = Q_1 \cup Q_{1'}$,
+    \item $\Sigma$ é o alfabeto de entrada,
+    \item $\Gamma$ é o alfabeto de pilha,
+    \item $\delta = \delta_1 \cup \delta_{1'}$ e $(q_{i'}, \epsilon) \in \delta(q_i, \epsilon, \epsilon)$ para todo $i$, tal que $q_i \in Q_1$ e $q_{i'} \in Q_{1'}$,
+    \item $q_0 = q_1$
+    \item $F = F_{1'}$
+\end{enumerate}
+
+\begin{proof} Para demonstrar que a construção está correta, devemos provar que $\forall w \in \Sigma^*$, $w \in SUFIXO(A) \iff w \in L(M)$, onde $L(M)$ é a linguagem do autômato $M$.
+
+$\Rightarrow$ Se $w \in SUFIXO(A)$, então $w \in L(M)$
+Seja $v = x_1x_2 \ldots x_n$ uma cadeia em $SUFIXO(A)$. Logo, existe uma cadeia $uv \in A$ e um passeio $X = q_1q_2 \ldots q_m$ em $P$ (autômato que reconhece as cadeias de $A$) tal que $q_1$ é o estado inicial de $P$ e $q_m$ é um estado final de $P$. Seja $X' = q_jq_{j+1} \ldots q_m$ o trecho de $X$ que consome $v$. No autômato $M$ alteramos as transições de $A$ para que estas não consumam a cadeia, mas atualizem apropriadamente a pilha. Logo, ao ler a cadeia $v$, o autômato $M$ simulará o passeio de $q_1q_2 \ldots q_j$ sem consumir a cadeia e, então, através de uma transição $\epsilon$ irá para o estado $q_{j'}$ de $A$ que consumirá e percorrerá o passeio $q_{j'}q_{j+1'} \ldots q_{m'}$ equivalente ao passeio $X' = q_jq_{j+1'} \ldots q_m$, levando a $q_{m'}$ que é um estado final de $M$.
+
+$\Leftarrow$ Se $w \in L(M)$, então $w \in SUFIXO(A)$
+Seja $w = x_1x_2 \ldots x_n$ uma cadeia reconhecida pelo autômato $M$. Logo, existe um passeio $X = q_1q_2 \ldots q_m$ que reconhece $w$ em $M$, tal que $q_1$ é o estado inicial de $P$ e $q_m$ é um estado final de $P'$. A porção de $M$ proveniente de $P$ não consome a cadeia de entrada e, portanto, ela é consumida na porção de $M$ proveniente de $P'$. Para que $w$ esteja em $SUFIXO(A)$, precisamos encontrar uma cadeia $u$ tal que $uw \in A$. \textcolor{red}{to be completed}
+\end{proof}
