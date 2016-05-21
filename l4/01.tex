@@ -1,3 +1,37 @@
 
 \noindent \textbf{L4.1} Complete a demonstração formal do lema 2.21, a primeira parte do teorema 2.20. A saber, primeiro demonstre que, para toda palavra $w$ derivada pela gramática $A$, uma computação que aceite a palavra $w$ no autômato construído $P$ pode conduzir do estado $q_{inicio}$ para o estado $q_{aceita}$. Em seguida, demonstre que toda palavra $w$ aceita por uma computação de $P$ admite uma derivação pela gramática $A$. \\[3pt]
-\textbf{Resposta: TODO}
+\textbf{Resposta: } Seja $L$ a linguagem livre de contexto em questão e seja $A = (V, \Sigma, R, S)$ uma gramática que gera $L$.
+
+Seja $P$ o autômato construído na prova do lema 2.21. O autômato construído possui, basicamente, três "macroestados": o estado de início, o estado de loop e um estado final.
+
+Para demostrar que o autômato a pilha construído no lema 2.21 reconhece a mesma linguagem que é associada à gramática a partir da qual o autômato a pilha foi construído, vamos enunciar a seguinte afirmação:
+
+\textsc{Afirmação:} Seja $w$ uma palavra composta apenas por terminais, ou seja, $w \in \Sigma^*$. Seja $\alpha = \epsilon$ ou uma concatenação qualquer de variáveis e terminais de $A$ começando com uma variável. Então, partindo da variável de início $S$ de $A$, conseguimos gerar $w\alpha$ por uma sucessão de regras de $A$ se, e somente se, existe uma computação do autômato $P$ que vai do estado inicial e passa pelo estado de loop após ter processado um trecho $w$ da palavra de entrada e, precisamente, com $\alpha\$$ na pilha.
+
+A afirmação acima é mais forte do que queremos provar, que seria apenas o caso de $\alpha$ ser a palavra vazia, pois implicaria para qualquer palavra $w \in \Sigma^*$, partindo da variável inicial $S$ de $A$, conseguimos gerar $w$ por uma sucessão de regras de $A$ se, e somente se, existe uma computação do autômato $P$ que vai do estado inicial e passa pelo estado de loop após ter processado $w$ e, precisamente, com $\$$ na pilha. Neste caso, a transição $(\epsilon, \$ \rightarrow \epsilon)$ nos levaria ao estado final do autômato, aceitando, assim, a palavra $w$.
+
+Dessa forma, vamos apenas demonstrar a afirmação e, para tanto, vamos dividir a prova em duas partes, a saber:
+
+Seja $w$ uma palavra composta apenas por terminais, ou seja, $w \in \Sigma^*$. Seja $\alpha = \epsilon$ ou uma concatenação qualquer de variáveis e terminais de $A$ começando com uma variável.
+
+\textbf{1.} Partindo da variável inicial $S$ de $A$, conseguimos gerar $w\alpha$ por uma sucessão de regras de $A$, se existe uma computação do autômato $P$ que vai do estado inicial e passa pelo estado de loop após ter processado um trecho w da palavra de entrada e, precisamente, com $\alpha\$$ na pilha.
+\begin{proof} Prova por indução no comprimento $k$ de uma derivação mais à esquerda de $w$ a partir de $S$.
+
+\indbase Para $k = 0$ não temos qualquer derivação. Logo, $w = \epsilon$ e $\alpha = S$ é o início da derivação e $S\$$ está na pilha no início do processamento.
+
+\indhypo Suponha que a a afirmação em \textbf{1.} é válida $\forall k \geq 0$.
+
+\indstep Seja $w$ uma cadeia, onde $w \in \Sigma^*$ seguida de $\alpha$ que é uma concatenação qualquer de variáveis e terminais de $A$ começando com uma variável, tal que $w\alpha$ foi obtida após $k + 1$ derivações mais à esquerda a partir de $S$. Seja $S \Rightarrow u_0 \Rightarrow u_1 \ldots \Rightarrow u_{k-1} \Rightarrow u_k$ essas $k + 1$ derivações a partir de $S$ que geram $w\alpha$. A $k$-ésima derivação pode ser descrita como $Y \rightarrow \delta$, e $u_k$ (resultado da $k$-ésima derivação) deve ser da forma $xY\beta$, tal que $x \in \Sigma^*$, $Y \in V$ e $\beta = V(V \cup \Sigma)^*$, já que as derivações são sempre mais à esquerda, a derivação a ser usada será $Y \rightarrow \delta$ e, ainda há $\alpha$ a ser processado.
+
+Pela hipótese de indução, temos que existe uma computação no autômato $P$ que vai do estado inicial e passa pelo estado de loop após ter processado um trecho $w' = x$ (trecho de $w$) da palavra de entrada e, precisamente, com $\alpha'\$$ na pilha, tal que $\alpha' = Y\beta$. Fazendo, pois, a $(k+1)$-ésima derivação, temos na pilha uma troca de $Y$ por $\delta$, ou seja, $xY\beta \Rightarrow x\delta\beta$. Como $x\delta\beta = w\alpha \neq w'\alpha'$, temos que $\delta$ também é da forma $zW\sigma$, onde $z \in \Sigma^*$, $W \in V$ e $\sigma = V(V \cup \Sigma)^*$, ou seja, $x\delta\beta \Rightarrow xzW\sigma\beta = w\alpha$. Os símbolos terminais são sempre consumidos e retirados da pilha pelo laço do autômato $P$, restando na pilha $W\sigma\beta$. Dessa forma, temos que $w = xy$ e $\alpha = W\sigma\beta$ que, juntamente com $\$$ é, precisamente, o que temos na pilha após o processamento de $w$.
+\end{proof}
+
+\textbf{2.} Se existe uma computação do autômato $P$ que vai do estado inicial e passa pelo estado de loop após ter processado um trecho $w$ da palavra de entrada e, precisamente, com $\alpha\$$ na pilha, então conseguimos gerar $w\alpha$ por uma sucessão de regras de $A$.
+\begin{proof} Prova por indução no número $k$ de vezes que a computação em questão passa por "supertransições" (uma supertransição é qualquer uma daquelas que saem do estado de loop e entram no estado de loop).
+
+\indbase Para $k = 0$, utilizamos apenas a transição $(\epsilon, \epsilon \Rightarrow S\$)$ que parte do estado inicial e chega no estado de loop. Logo, nada de $w$ foi processado, ou seja, $w = \epsilon$ e $\alpha = S$, que é o topo da pilha (onde temos somente $S\$$). Como $S$ é o símbolo inicial da gramática $A$, é sempre possível gerar $w\alpha$ a partir de $A$.
+
+\indhypo Suponha que a a afirmação em \textbf{2.} é válida $\forall k \geq 0$.
+
+\indstep Seja $w \in \Sigma^*$ computada em $P$ após passar por $k + 1$ "supertransições" e seja $\alpha$ a concatenação de variáveis e terminais de $A$ começando com uma variável, seguida de $\$$, o conteúdo da pilha após processar $w$. Seja $l_1, l_2, \ldots l_k, l_{k+1}$ as $k+1$ passagens pelas “supertransições” em $P$. Seja $w' \in \Sigma^*$ a cadeia computada em $P$ após passar por $i \leq k$ transições do tipo "supertransições", tal que tenhamos $\alpha'\$$ na pilha, onde $\alpha'$ é a concatenação de variáveis e terminais de $A$ começando com uma variável. Pela hipótese de indução (não consegui terminar a tempo).
+\end{proof}

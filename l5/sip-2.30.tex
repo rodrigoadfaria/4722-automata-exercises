@@ -1,0 +1,45 @@
+
+\noindent \textbf{L5.3 (Sipser 2.30)} Use o lema do bombeamento para mostrar que as seguintes linguagens não são livres do contexto.
+\begin{enumerate}[label={\textbf{\alph*.}}]
+    
+    \item $L_a = \{0^n1^n0^n1^n \ |\ n \geq 0\}$\\[3pt]
+    
+    \item $L_b = \{0^n\#0^{2n}\#0^{3n} \ |\ n \geq 0\}$ - Resposta no livro
+    
+    \item $L_c = \{w\#t \ |\ w$ é uma subcadeia de $t$, onde $w, t \in \{a, b\}^*\}$ - Resposta no livro
+    
+    \item $L_d = \{t_1\#t_2 \ldots \#t_k \ |\ k \geq 2$, cada $t_i \in \{a, b\}^*$, e $t_i = t_j$, para algum $i\neq j\}$\\[3pt]
+    \textbf{Resposta:} Vamos usar o lema do bombeamento para mostrar que $L_d$ não é livre do contexto. A prova é por contradição.
+    
+    Suponha o contrário, ou seja, que $L_d$ é livre do contexto. Seja $p$ o comprimento de bombeamento dado pelo lema do bombeamento. Seja $s$ a cadeia $s = a^pb^p\#a^pb^p$. Como $s \in L_d$ e $|s| \geq p$, o lema do bombeamento garante que $s$ pode ser dividida em cinco partes $s = uvxyz$, onde, para qualquer $i \geq 0$, $uv^ixy^iz \in L_d$. Vamos mostrar que isso é impossível.
+    
+    Vamos analisar todas as possibilidades de particionamento de $s$.
+    
+    \begin{enumerate}[label={\textbf{Caso \arabic*:}}]
+        \item $v$ e $y$ contêm apenas $a'$s da primeira parte de $s$, tal que $u = a^l, v = a^m, x = a^n, y = a^q$ e $z = a^rb^p\#a^pb^p$, onde $l, m, n, q, r \geq 0$, $m$ ou $q \neq 0$ e $l + m + n + q + r = p$.
+        
+        Pelo lema do bombeamento, podemos bombear $v$ e $y$ $i$ vezes, para qualquer $i \geq 0$. Se tomarmos $i = 0$, temos que a cadeia $uxz$ possui menos $a'$s na primeira parte (antes do $\#$) que na segunda parte (após o $\#$), pois como $m$ ou $q \neq 0$, temos que $l + n + r < p$ e, portanto, esta nova cadeia não pertence a $L_d$, o que é uma contradição.
+        
+        Analogamente, este caso cobre a situação em que $v$ e $y$ contêm apenas $a'$s da segunda parte de $s$.
+        
+        \item $v$ e $y$ contêm $b'$s da primeira parte de $s$ e não possuem símbolos da segunda parte.
+        
+        Temos duas possibilidades:
+        \begin{itemize}
+            \item $u = a^l, v = a^mb^n, x = b^q, y = b^r$ e $z = b^t\#a^pb^p$, onde $l, m, n, q, r, t \geq 0$, $m + n$ ou $r \neq 0$, $l + m = p$, $n + q + r + t = p$ e $|vxy| \leq p$ ou,
+            
+            \item $u = a^l, v = a^r, x = a^q, y = a^mb^n$ e $z = b^t\#a^pb^p$, onde $l, m, n, q, r, t \geq 0$, $m + n$ ou $r \neq 0$, $l + m + q + r = p$, $n + t = p$ e $|vxy| \leq p$.
+        \end{itemize}
+        
+        Vamos assumir, sem perda de generalidade, que a quantidade de $b'$s de $v$ ou $y$ é maior que zero, caso contrário, voltaríamos ao caso anterior. Dessa forma, para qualquer uma das duas possibilidades, se fizermos um bombeamento de $v$ e $y$ $i$ vezes, para $i = 0$, temos que a cadeia $uxz$ possui menos $b'$s na primeira parte (antes do $\#$) do que na segunda (após o $\#$) e, portanto, esta nova cadeia não pertence a $L_d$, o que é uma contradição.
+        
+        Analogamente, este caso cobre a situação em que $v$ e $y$ contêm $b'$s da segunda parte de $s$.
+
+        \item $v$ e $y$ contêm $b'$s da primeira parte de $s$ e $a'$s da segunda parte de $s$.
+        
+        Pela condição 2 do lema do bombeamento, temos que $v$ ou $y$ possuem ao menos um símbolo. Podemos assumir, sem perda de generalidade, que $v$ ou $y$ possui pelo menos um $b$ da primeira parte e pelo menos um $a$ da segunda parte de $s$, caso contrário, cairíamos em um dos casos já abordados previamente. Ao bombearmos $v$ e $y$ $i$ vezes, para $i = 0$, temos que a cadeia $uxz$ possui menos $b'$s na primeira parte do que na segunda e menos $a'$s na segunda parte do que na primeira, o que é uma contradição, já que essa cadeia não pertence a $L_d$.
+        
+        Vale notar que é impossível que $v$ e $y$ possuam símbolos iguais de partes diferentes da cadeia $s$ pela condição 3 do lema do bombeamento.
+    \end{enumerate}
+
+\end{enumerate}
