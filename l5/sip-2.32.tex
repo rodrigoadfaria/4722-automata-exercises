@@ -1,3 +1,13 @@
 
 \noindent \textbf{L5.4 (Sipser 2.32)} Seja $\Sigma = \{1, 2, 3, 4\}$ e $C = \{w \in \Sigma^* \ |\ $em $w$, o número de 1s é igual ao número de 2s, e o número de 3s é igual ao número de 4s $\}$. Mostre que $C$ não é livre do contexto.\\[3pt]
-\textbf{Resposta: TODO}
+\textbf{Resposta: } Suponha o contrário, ou seja, que $C$ é livre do contexto. Seja $p$ o comprimento de bombeamento dado pelo lema do bombeamento. Seja $s$ a cadeia $s = 1^p3^p2^p4^p$. Como $s \in C$ e $|s| \geq p$, o lema do bombeamento garante que $s$ pode ser dividida em cinco partes $s = uvxyz$, onde, $\forall i \geq 0$, $uv^ixy^iz \in C$. Vamos mostrar que isso é impossível, analisando todas as possibilidades de particionamento de $s$.
+
+\begin{enumerate}[label={\textbf{Caso \arabic*:}}]
+    \item $vxy$ está contido em uma das fronteiras de $s$\\[2pt]
+    Isso é equivalente a dizer que $vxy$ possui apenas um tipo de símbolo do alfabeto. Sem perda de generalidade, digamos que $vxy$ contém apenas $1$s da primeira parte de $s$. Se tomarmos $i = 2$, temos que a cadeia produzida pelo bombeamento $w = uv^2xy^2z$ tem mais 1s do que 2s e, portanto, $w \notin C$, o que nos leva a uma contradição.
+    
+    \item $vxy$ está contido exatamente na fronteira entre dois símbolos distintos\\[2pt]
+    Digamos que $vxy \subseteq 1^p3^p$. Como $|vxy| \leq p$, temos ocorrência tanto de 1s quanto 3s em $vxy$, caso contrário, voltaríamos ao caso anterior. Se tomarmos $i = 0$, temos que a cadeia produzida pelo bombeamento $w = uxz$ terá um número menor de 1s do que 2s, bem como um número menor de 3s do que 4s e, portanto, $w \notin C$, o que novamente nos leva a uma contradição.
+    
+    Analogamente, este caso cobre a situação em que $vxy \subseteq 3^p2^p$ ou $vxy \subseteq 2^p4^p$.
+\end{enumerate}
