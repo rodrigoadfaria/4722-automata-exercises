@@ -1,6 +1,6 @@
 
 \noindent \textbf{L5.1} Construa a gramática obtida a partir do autômato a pilha da figura 2.15 usando o lema 2.27, a segunda parte do teorema 2.20. Particione o conjunto de variáveis da sua gramática de forma a exibir quais delas geram a linguagem vazia e quais geram linguagens não vazias.\\[3pt]
-\textbf{Resposta: } Referência em \cite{portland}. O autômato dado na figura 2.15 não atende às três condições solicitadas no lema 2.27, a saber:
+\textbf{Resposta: } O autômato dado na figura 2.15 não atende às três condições solicitadas no lema 2.27, a saber:
 
 \begin{enumerate}[label={\textbf{\arabic*.}}]
     \item Deve ter um  único estado de aceitação
@@ -8,15 +8,13 @@
     \item Toda transição ou empilha, ou desempilha um símbolo
 \end{enumerate}
 
-Claramente o autômato não atende à condição 1. Podemos adicionar uma transição $\epsilon, \epsilon \rightarrow \epsilon$ de $q_1$ a $q_4$ para que $q_1$ deixe de ser um estado de aceitação, porém, o novo autômato não atenderia à condição 3. Logo, vamos adicionar um estado intermediário entre $q_1$ e $q_4$ e transições que empilham e desempilham o símbolo $\texttt{\#}$, respectivamente. Note que essa alteração faz com que o  autômato atenda às 3 condições solicitadas.
+Claramente o autômato não atende a condição 1. Podemos adicionar uma transição $\epsilon, \$ \rightarrow \epsilon$ de $q_2$ a $q_4$ para que $q_1$ deixe de ser um estado de aceitação. Note que essa alteração faz com que o  autômato atenda as 3 condições solicitadas.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.2]
 \tikzstyle{every node}+=[inner sep=0pt]
 \draw [black] (34.3,-14.5) circle (3);
 \draw (34.3,-14.5) node {$q_1$};
-\draw [black] (18.6,-22.5) circle (3);
-\draw (18.6,-22.5) node {$q_5$};
 \draw [black] (33.2,-30.4) circle (3);
 \draw (33.2,-30.4) node {$q_4$};
 \draw [black] (33.2,-30.4) circle (2.4);
@@ -26,12 +24,6 @@ Claramente o autômato não atende à condição 1. Podemos adicionar uma transi
 \draw (53.3,-30.4) node {$q_3$};
 \draw [black] (27.5,-14.5) -- (31.3,-14.5);
 \fill [black] (31.3,-14.5) -- (30.5,-14) -- (30.5,-15);
-\draw [black] (31.63,-15.86) -- (21.27,-21.14);
-\fill [black] (21.27,-21.14) -- (22.21,-21.22) -- (21.76,-20.33);
-\draw (19.17,-17.97) node [above] {$\epsilon, \epsilon \rightarrow \texttt{\#}$};
-\draw [black] (21.24,-23.93) -- (30.56,-28.97);
-\fill [black] (30.56,-28.97) -- (30.1,-28.15) -- (29.62,-29.03);
-\draw (18.59,-26.97) node [below] {$\epsilon, \texttt{\#} \rightarrow \epsilon$};
 \draw [black] (50.3,-30.4) -- (36.2,-30.4);
 \fill [black] (36.2,-30.4) -- (37,-30.9) -- (37,-29.9);
 \draw (43.25,-30.9) node [below] {$\epsilon, \$ \rightarrow \epsilon$};
@@ -47,10 +39,13 @@ Claramente o autômato não atende à condição 1. Podemos adicionar uma transi
 \draw [black] (53.3,-17.5) -- (53.3,-27.4);
 \fill [black] (53.3,-27.4) -- (53.8,-26.6) -- (52.8,-26.6);
 \draw (53.8,-22.45) node [right] {$1, 0 \rightarrow \epsilon$};
+\draw [black] (50.95,-16.36) -- (35.55,-28.54);
+\fill [black] (35.55,-28.54) -- (36.49,-28.43) -- (35.87,-27.65);
+\draw (35.91,-21.95) node [above] {$\epsilon, \$ \rightarrow \epsilon$};
 \end{tikzpicture}
 \end{center}
 
-Seja $Q = \{q_1, q_2, q_3,q_4, q_5\}$ o conjunto de estados do autômato acima modificado. Vamos denominar por $G$ a gramática que vamos construir a partir do autômato de acordo com o procedimento dado no lema 2.27. A regra inicial é:
+Seja $Q = \{q_1, q_2, q_3, q_4\}$ o conjunto de estados do autômato acima modificado. Vamos denominar por $G$ a gramática que vamos construir a partir do autômato de acordo com o procedimento dado no lema 2.27. A regra inicial é:
 
 $S \rightarrow A_{14}$
 
@@ -59,40 +54,30 @@ $S \rightarrow A_{14}$
     $A_{11} \rightarrow \epsilon$\\
     $A_{22} \rightarrow \epsilon$\\
     $A_{33} \rightarrow \epsilon$\\
-    $A_{44} \rightarrow \epsilon$\\
-    $A_{55} \rightarrow \epsilon$
+    $A_{44} \rightarrow \epsilon$
     
     \item Para cada $p, q, r \in Q$, insira a regra $A_{pq} \rightarrow A_{pr}A_{rq}$ em $G$\\[2pt]
-    $A_{11} \rightarrow A_{11}A_{11}\ |\ A_{12}A_{21}\ |\ A_{13}A_{31}\ |\ A_{14}A_{41}\ |\ A_{15}A_{51}$\\
-    $A_{12} \rightarrow A_{11}A_{12}\ |\ A_{12}A_{22}\ |\ A_{13}A_{32}\ |\ A_{14}A_{42}\ |\ A_{15}A_{52}$\\
-    $A_{13} \rightarrow A_{11}A_{13}\ |\ A_{12}A_{23}\ |\ A_{13}A_{33}\ |\ A_{14}A_{43}\ |\ A_{15}A_{53}$\\
-    $A_{14} \rightarrow A_{11}A_{14}\ |\ A_{12}A_{24}\ |\ A_{13}A_{34}\ |\ A_{14}A_{44}\ |\ A_{15}A_{54}$\\
-    $A_{15} \rightarrow A_{11}A_{15}\ |\ A_{12}A_{25}\ |\ A_{13}A_{35}\ |\ A_{14}A_{45}\ |\ A_{15}A_{55}$\\[4pt]
-    $A_{21} \rightarrow A_{21}A_{11}\ |\ A_{22}A_{21}\ |\ A_{23}A_{31}\ |\ A_{24}A_{41}\ |\ A_{25}A_{51}$\\
-    $A_{22} \rightarrow A_{21}A_{12}\ |\ A_{22}A_{22}\ |\ A_{23}A_{32}\ |\ A_{24}A_{42}\ |\ A_{25}A_{52}$\\
-    $A_{23} \rightarrow A_{21}A_{13}\ |\ A_{22}A_{23}\ |\ A_{23}A_{33}\ |\ A_{24}A_{43}\ |\ A_{25}A_{53}$\\
-    $A_{24} \rightarrow A_{21}A_{14}\ |\ A_{22}A_{24}\ |\ A_{23}A_{34}\ |\ A_{24}A_{44}\ |\ A_{25}A_{54}$\\
-    $A_{25} \rightarrow A_{21}A_{15}\ |\ A_{22}A_{25}\ |\ A_{23}A_{35}\ |\ A_{24}A_{45}\ |\ A_{25}A_{55}$\\[4pt]
-    $A_{31} \rightarrow A_{31}A_{11}\ |\ A_{32}A_{21}\ |\ A_{33}A_{31}\ |\ A_{34}A_{41}\ |\ A_{35}A_{51}$\\
-    $A_{32} \rightarrow A_{31}A_{12}\ |\ A_{32}A_{22}\ |\ A_{33}A_{32}\ |\ A_{34}A_{42}\ |\ A_{35}A_{52}$\\
-    $A_{33} \rightarrow A_{31}A_{13}\ |\ A_{32}A_{23}\ |\ A_{33}A_{33}\ |\ A_{34}A_{43}\ |\ A_{35}A_{53}$\\
-    $A_{34} \rightarrow A_{31}A_{14}\ |\ A_{32}A_{24}\ |\ A_{33}A_{34}\ |\ A_{34}A_{44}\ |\ A_{35}A_{54}$\\
-    $A_{35} \rightarrow A_{31}A_{15}\ |\ A_{32}A_{25}\ |\ A_{33}A_{35}\ |\ A_{34}A_{45}\ |\ A_{35}A_{55}$\\[4pt]
-    $A_{41} \rightarrow A_{41}A_{11}\ |\ A_{42}A_{21}\ |\ A_{43}A_{31}\ |\ A_{44}A_{41}\ |\ A_{45}A_{51}$\\
-    $A_{42} \rightarrow A_{41}A_{12}\ |\ A_{42}A_{22}\ |\ A_{43}A_{32}\ |\ A_{44}A_{42}\ |\ A_{45}A_{52}$\\
-    $A_{43} \rightarrow A_{41}A_{13}\ |\ A_{42}A_{23}\ |\ A_{43}A_{33}\ |\ A_{44}A_{43}\ |\ A_{45}A_{53}$\\
-    $A_{44} \rightarrow A_{41}A_{14}\ |\ A_{42}A_{24}\ |\ A_{43}A_{34}\ |\ A_{44}A_{44}\ |\ A_{45}A_{54}$\\
-    $A_{45} \rightarrow A_{41}A_{15}\ |\ A_{42}A_{25}\ |\ A_{43}A_{35}\ |\ A_{44}A_{45}\ |\ A_{45}A_{55}$\\[4pt]
-    $A_{51} \rightarrow A_{51}A_{11}\ |\ A_{52}A_{21}\ |\ A_{53}A_{31}\ |\ A_{54}A_{41}\ |\ A_{55}A_{51}$\\
-    $A_{52} \rightarrow A_{51}A_{12}\ |\ A_{52}A_{22}\ |\ A_{53}A_{32}\ |\ A_{54}A_{42}\ |\ A_{55}A_{52}$\\
-    $A_{53} \rightarrow A_{51}A_{13}\ |\ A_{52}A_{23}\ |\ A_{53}A_{33}\ |\ A_{54}A_{43}\ |\ A_{55}A_{53}$\\
-    $A_{54} \rightarrow A_{51}A_{14}\ |\ A_{52}A_{24}\ |\ A_{53}A_{34}\ |\ A_{54}A_{44}\ |\ A_{55}A_{54}$\\
-    $A_{55} \rightarrow A_{51}A_{15}\ |\ A_{52}A_{25}\ |\ A_{53}A_{35}\ |\ A_{54}A_{45}\ |\ A_{55}A_{55}$
+    $A_{11} \rightarrow A_{11}A_{11}\ |\ A_{12}A_{21}\ |\ A_{13}A_{31}\ |\ A_{14}A_{41}$\\
+    $A_{12} \rightarrow A_{11}A_{12}\ |\ A_{12}A_{22}\ |\ A_{13}A_{32}\ |\ A_{14}A_{42}$\\
+    $A_{13} \rightarrow A_{11}A_{13}\ |\ A_{12}A_{23}\ |\ A_{13}A_{33}\ |\ A_{14}A_{43}$\\
+    $A_{14} \rightarrow A_{11}A_{14}\ |\ A_{12}A_{24}\ |\ A_{13}A_{34}\ |\ A_{14}A_{44}$\\[4pt]
+    $A_{21} \rightarrow A_{21}A_{11}\ |\ A_{22}A_{21}\ |\ A_{23}A_{31}\ |\ A_{24}A_{41}$\\
+    $A_{22} \rightarrow A_{21}A_{12}\ |\ A_{22}A_{22}\ |\ A_{23}A_{32}\ |\ A_{24}A_{42}$\\
+    $A_{23} \rightarrow A_{21}A_{13}\ |\ A_{22}A_{23}\ |\ A_{23}A_{33}\ |\ A_{24}A_{43}$\\
+    $A_{24} \rightarrow A_{21}A_{14}\ |\ A_{22}A_{24}\ |\ A_{23}A_{34}\ |\ A_{24}A_{44}$\\[4pt]
+    $A_{31} \rightarrow A_{31}A_{11}\ |\ A_{32}A_{21}\ |\ A_{33}A_{31}\ |\ A_{34}A_{41}$\\
+    $A_{32} \rightarrow A_{31}A_{12}\ |\ A_{32}A_{22}\ |\ A_{33}A_{32}\ |\ A_{34}A_{42}$\\
+    $A_{33} \rightarrow A_{31}A_{13}\ |\ A_{32}A_{23}\ |\ A_{33}A_{33}\ |\ A_{34}A_{43}$\\
+    $A_{34} \rightarrow A_{31}A_{14}\ |\ A_{32}A_{24}\ |\ A_{33}A_{34}\ |\ A_{34}A_{44}$\\[4pt]
+    $A_{41} \rightarrow A_{41}A_{11}\ |\ A_{42}A_{21}\ |\ A_{43}A_{31}\ |\ A_{44}A_{41}$\\
+    $A_{42} \rightarrow A_{41}A_{12}\ |\ A_{42}A_{22}\ |\ A_{43}A_{32}\ |\ A_{44}A_{42}$\\
+    $A_{43} \rightarrow A_{41}A_{13}\ |\ A_{42}A_{23}\ |\ A_{43}A_{33}\ |\ A_{44}A_{43}$\\
+    $A_{44} \rightarrow A_{41}A_{14}\ |\ A_{42}A_{24}\ |\ A_{43}A_{34}\ |\ A_{44}A_{44}$
     
     \item Por fim, para cada $p, q, r, s \in Q$, $t \in \Gamma$ e $a, b \in \Sigma_\epsilon$, insira a regra $A_{pq} \rightarrow aA_{rs}b$ em $G$, se $\delta(p, a, \epsilon)$ contém $(r, t)$ e $\delta(s, b, t)$ contém $(q, \epsilon)$\\[2pt]
-    $A_{14} \rightarrow \epsilon A_{23} \epsilon\ |\ \epsilon A_{55} \epsilon$\\
+    $A_{14} \rightarrow \epsilon A_{22} \epsilon\ |\ \epsilon A_{23} \epsilon$\\
     $A_{23} \rightarrow 0A_{22}1\ |\ 0A_{23}1$
 \end{enumerate}
 
-Com isso, concluímos a construção da gramática $G$.\\[6pt]
-
+Com isso, concluímos a construção da gramática $G$.\\[3pt]
+\textbf{Nota: } Sobre as variáveis que geram a linguagem vazia, penso naquelas do tipo $A_{11} \rightarrow A_{11}A_{11}$, porém, pelas produções em 1 e 2, estas ainda são substituíveis e não ficariam em \textit{loop}. Pensei em eliminar regras desnecessárias com a) encontrar as variáveis que produzem cadeias somente com terminais e b) encontrar as variáveis que são atingíveis a partir da variável inicial $S$. Porém a) não acontece e b) é sempre verdade pois, se eu gerar o grafo de dependência, sempre consigo chegar em qualquer variável a partir de $S$. Não sei se entendi bem o que era pra fazer para separar o conjunto de variáveis.\\[6pt]
