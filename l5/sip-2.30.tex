@@ -18,52 +18,47 @@
     Além disso, a condição 3 do lema do bombeamento diz que $|vxy| \leq p$.
     
     \begin{enumerate}[label={\textbf{Caso \arabic*:}}]
-        \item $vxy$ não ultrapassa o limite de uma parte de $s$\\[2pt]
-        Sem perda de generalidade, vamos considerar que $vxy$ está na primeira parte de $s$. Pelo lema do bombeamento, podemos bombear $v$ e $y$ $i$ vezes $\forall i \geq 0$. Se tomarmos $w = uv^2xy^2z$, claramente teremos mais $0$s na primeira metade e, portanto, $w \notin L_a$, o que é uma contradição.
+        \item $vxy$ não ultrapassa o limite de um segmento de $s$\\[2pt]
+        Sem perda de generalidade, vamos considerar que $vxy$ está no primeiro segmento de $s$. Pelo lema do bombeamento, podemos bombear $v$ e $y$ $i$ vezes $\forall i \geq 0$. Se tomarmos $w = uv^2xy^2z$, claramente teremos mais $0$s na primeira metade e, portanto, $w \notin L_a$, o que é uma contradição.
         
-        \item $vxy$ está contido entre a primeira e a segunda parte de $0$s e $1$s em $s$, tal que $u = 0^a$, $v = 0^b$, $x = 0^c1^d$, $y = 1^e$ e $z = 1^f0^p1^p$, onde $a, b, c, d, e$ e $f \geq 0$, $b$ ou $e \neq 0$, $a + b + c = p$ e $d + e + f = p$\\[2pt]
+        \item $vxy$ está contido entre o primeiro e o segundo segmento de $0$s e $1$s em $s$, tal que $u = 0^a$, $v = 0^b$, $x = 0^c1^d$, $y = 1^e$ e $z = 1^f0^p1^p$, onde $a, b, c, d, e$ e $f \geq 0$, $b$ ou $e \neq 0$, $a + b + c = p$ e $d + e + f = p$\\[2pt]
         Se tomarmos $i = 0$, temos que $w = uxz$. Logo, $a + c < p$, assim como $d + f < p$, o que provoca um deslocamento da metade de $w$ à esquerda, desbalanceando a quantidade de $0$s e $1$s da primeira metade em relação à segunda e, portanto, $w \notin L_a$, o que novamente é uma contradição.
         
-        Analogamente, este caso cobre a situação em que $vxy$ está contido entre a terceira e a quarta parte de $0$s e $1$s.
+        Analogamente, este caso cobre a situação em que $vxy$ está contido entre o terceiro e o quarto segmento de $0$s e $1$s.
         
-        \item $vxy$ está contido entre a segunda e a terceira parte de $1$s e $0$s, ou seja, na metade de $s$\\[2pt]
-        Como $|vxy| \leq p$, $vxy$ está após a primeira fronteira e antes da terceira fronteira de $s$. Se tomarmos $i = 0$, obtemos como resultado do bombeamento uma cadeia $w = uxz$, onde o tamanho de cada parte de $w$ será $p\ |\ <p\ |\ <p\ |\ p$, respectivamente. Logo, as ocorrências de $0$s e $1$s da primeira metade não correspondem às da segunda e, portanto, $w \notin L_a$, o que também é uma contradição.
+        \item $vxy$ está contido entre o segundo e o terceiro segmento de $1$s e $0$s, ou seja, na metade de $s$\\[2pt]
+        Como $|vxy| \leq p$, $vxy$ está após a primeira fronteira e antes da terceira fronteira de $s$. Se tomarmos $i = 0$, obtemos como resultado do bombeamento uma cadeia $w = uxz$, onde o tamanho de cada segmento de $w$ será $p\ |\ <p\ |\ <p\ |\ p$, respectivamente. Logo, as ocorrências de $0$s e $1$s da primeira metade não correspondem às da segunda e, portanto, $w \notin L_a$, o que também é uma contradição.
     \end{enumerate}
     
-    \item $L_b = \{0^n\#0^{2n}\#0^{3n} \ |\ n \geq 0\}$ - Resposta no livro
+    \item $L_b = \{0^n\texttt{\#}0^{2n}\texttt{\#}0^{3n} \ |\ n \geq 0\}$ - Resposta no livro
     
-    \item $L_c = \{w\#t \ |\ w$ é uma subcadeia de $t$, onde $w, t \in \{a, b\}^*\}$ - Resposta no livro
+    \item $L_c = \{w\texttt{\#}t \ |\ w$ é uma subcadeia de $t$, onde $w, t \in \{a, b\}^*\}$ - Resposta no livro
     
-    \item $L_d = \{t_1\#t_2 \ldots \#t_k \ |\ k \geq 2$, cada $t_i \in \{a, b\}^*$, e $t_i = t_j$, para algum $i\neq j\}$\\[3pt]
+    \item $L_d = \{t_1\texttt{\#}t_2 \ldots \texttt{\#}t_k \ |\ k \geq 2$, cada $t_i \in \{a, b\}^*$, e $t_i = t_j$, para algum $i\neq j\}$\\[3pt]
     \textbf{Resposta:} Vamos usar o lema do bombeamento para mostrar que $L_d$ não é livre do contexto. A prova é por contradição.
     
-    Suponha o contrário, ou seja, que $L_d$ é livre do contexto. Seja $p$ o comprimento de bombeamento dado pelo lema do bombeamento. Seja $s$ a cadeia $s = a^pb^p\#a^pb^p$. Como $s \in L_d$ e $|s| \geq p$, o lema do bombeamento garante que $s$ pode ser dividida em cinco partes $s = uvxyz$, onde, para qualquer $i \geq 0$, $uv^ixy^iz \in L_d$. Vamos mostrar que isso é impossível.
-    
-    Vamos analisar todas as possibilidades de particionamento de $s$.
+    Suponha o contrário, ou seja, que $L_d$ é livre do contexto. Seja $p$ o comprimento de bombeamento dado pelo lema do bombeamento. Seja $s$ a cadeia $s = a^pb^p\texttt{\#}a^pb^p$. Como $s \in L_d$ e $|s| \geq p$, o lema do bombeamento garante que $s$ pode ser dividida em cinco partes $s = uvxyz$, onde, para qualquer $i \geq 0$, $uv^ixy^iz \in L_d$. Vamos mostrar que isso é impossível, analisando todas as possibilidades de particionamento de $s$.
     
     \begin{enumerate}[label={\textbf{Caso \arabic*:}}]
-        \item $v$ e $y$ contêm apenas $a'$s da primeira parte de $s$, tal que $u = a^l, v = a^m, x = a^n, y = a^q$ e $z = a^rb^p\#a^pb^p$, onde $l, m, n, q, r \geq 0$, $m$ ou $q \neq 0$ e $l + m + n + q + r = p$.
+        \item $v$ e $y$ contêm apenas $a'$s da primeira metade de $s$, tal que $u = a^l, v = a^m, x = a^n, y = a^q$ e $z = a^rb^p\texttt{\#}a^pb^p$, onde $l, m, n, q, r \geq 0$, $m$ ou $q \neq 0$ e $l + m + n + q + r = p$.\\[2pt]
+        Pelo lema do bombeamento, podemos bombear $v$ e $y$ $i$ vezes, para qualquer $i \geq 0$. Se tomarmos $i = 0$, temos que a cadeia $uxz$ possui menos $a'$s na primeira metade (antes do $\texttt{\#}$) que na segunda (após o $\texttt{\#}$), pois como $m$ ou $q \neq 0$, temos que $l + n + r < p$ e, portanto, esta nova cadeia não pertence a $L_d$, o que é uma contradição.
         
-        Pelo lema do bombeamento, podemos bombear $v$ e $y$ $i$ vezes, para qualquer $i \geq 0$. Se tomarmos $i = 0$, temos que a cadeia $uxz$ possui menos $a'$s na primeira parte (antes do $\#$) que na segunda parte (após o $\#$), pois como $m$ ou $q \neq 0$, temos que $l + n + r < p$ e, portanto, esta nova cadeia não pertence a $L_d$, o que é uma contradição.
+        Analogamente, este caso cobre a situação em que $v$ e $y$ contêm apenas $a'$s da segunda metade de $s$.
         
-        Analogamente, este caso cobre a situação em que $v$ e $y$ contêm apenas $a'$s da segunda parte de $s$.
-        
-        \item $v$ e $y$ contêm $b'$s da primeira parte de $s$ e não possuem símbolos da segunda parte.
-        
+        \item $v$ e $y$ contêm $b'$s da primeira metade de $s$ e não possuem símbolos da segunda metade.\\[2pt]
         Temos duas possibilidades:
         \begin{itemize}
-            \item $u = a^l, v = a^mb^n, x = b^q, y = b^r$ e $z = b^t\#a^pb^p$, onde $l, m, n, q, r, t \geq 0$, $m + n$ ou $r \neq 0$, $l + m = p$, $n + q + r + t = p$ e $|vxy| \leq p$ ou,
+            \item $u = a^l, v = a^mb^n, x = b^q, y = b^r$ e $z = b^t\texttt{\#}a^pb^p$, onde $l, m, n, q, r, t \geq 0$, $m + n$ ou $r \neq 0$, $l + m = p$, $n + q + r + t = p$ e $|vxy| \leq p$ ou,
             
-            \item $u = a^l, v = a^r, x = a^q, y = a^mb^n$ e $z = b^t\#a^pb^p$, onde $l, m, n, q, r, t \geq 0$, $m + n$ ou $r \neq 0$, $l + m + q + r = p$, $n + t = p$ e $|vxy| \leq p$.
+            \item $u = a^l, v = a^r, x = a^q, y = a^mb^n$ e $z = b^t\texttt{\#}a^pb^p$, onde $l, m, n, q, r, t \geq 0$, $m + n$ ou $r \neq 0$, $l + m + q + r = p$, $n + t = p$ e $|vxy| \leq p$.
         \end{itemize}
         
-        Vamos assumir, sem perda de generalidade, que a quantidade de $b'$s de $v$ ou $y$ é maior que zero, caso contrário, voltaríamos ao caso anterior. Dessa forma, para qualquer uma das duas possibilidades, se fizermos um bombeamento de $v$ e $y$ $i$ vezes, para $i = 0$, temos que a cadeia $uxz$ possui menos $b'$s na primeira parte (antes do $\#$) do que na segunda (após o $\#$) e, portanto, esta nova cadeia não pertence a $L_d$, o que é uma contradição.
+        Vamos assumir, sem perda de generalidade, que a quantidade de $b'$s de $v$ ou $y$ é maior que zero, caso contrário, voltaríamos ao caso anterior. Dessa forma, para qualquer uma das duas possibilidades, se fizermos um bombeamento de $v$ e $y$ $i$ vezes, para $i = 0$, temos que a cadeia $uxz$ possui menos $b'$s na primeira metade (antes do $\texttt{\#}$) do que na segunda (após o $\texttt{\#}$) e, portanto, esta nova cadeia não pertence a $L_d$, o que é uma contradição.
         
-        Analogamente, este caso cobre a situação em que $v$ e $y$ contêm $b'$s da segunda parte de $s$.
+        Analogamente, este caso cobre a situação em que $v$ e $y$ contêm $b'$s da segunda metade de $s$.
 
-        \item $v$ e $y$ contêm $b'$s da primeira parte de $s$ e $a'$s da segunda parte de $s$.
-        
-        Pela condição 2 do lema do bombeamento, temos que $v$ ou $y$ possuem ao menos um símbolo. Podemos assumir, sem perda de generalidade, que $v$ ou $y$ possui pelo menos um $b$ da primeira parte e pelo menos um $a$ da segunda parte de $s$, caso contrário, cairíamos em um dos casos já abordados previamente. Ao bombearmos $v$ e $y$ $i$ vezes, para $i = 0$, temos que a cadeia $uxz$ possui menos $b'$s na primeira parte do que na segunda e menos $a'$s na segunda parte do que na primeira, o que é uma contradição, já que essa cadeia não pertence a $L_d$.
+        \item $v$ e $y$ contêm $b'$s da primeira metade de $s$ e $a'$s da segunda metade de $s$.\\[2pt]
+        Pela condição 2 do lema do bombeamento, temos que $v$ ou $y$ possuem ao menos um símbolo. Podemos assumir, sem perda de generalidade, que $v$ ou $y$ possui pelo menos um $b$ da primeira metade e pelo menos um $a$ da segunda metade de $s$, caso contrário, cairíamos em um dos casos já abordados previamente. Ao bombearmos $v$ e $y$ $i$ vezes, para $i = 0$, temos que a cadeia $uxz$ possui menos $b'$s na primeira metade do que na segunda e menos $a'$s na segunda metade do que na primeira, o que é uma contradição, já que essa cadeia não pertence a $L_d$.
         
         Vale notar que é impossível que $v$ e $y$ possuam símbolos iguais de partes diferentes da cadeia $s$ pela condição 3 do lema do bombeamento.
     \end{enumerate}
