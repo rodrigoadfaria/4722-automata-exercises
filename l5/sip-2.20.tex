@@ -1,3 +1,31 @@
 
 \noindent \textbf{L5.2 (Sipser 2.20)} Seja $A/B = \{w \ |\ wx \in A$ para algum $x \in B\}$. Mostre que, se $A$ é livre do contexto e $B$ é regular, então $A/B$ é livre do contexto.\\[3pt]
-\textbf{Resposta: TODO}
+\textbf{Resposta: } Essa questão não consegui fazer, busquei resposta na internet \cite{sunysb} e tentei entender. Transcrevi a construção aqui.
+
+A ideia da construção do autômato é efetuar a computação em duas partes, separando cada etapa para $w$ e $x$. Começando por $q_0$ e de forma não determinística, descobrimos a cadeia $w$. Nesse etapa $X$ está se comportando como se fosse o autômato $P$. Depois de descobrir $w$, seremos levados à segunda parte de $X$, onde o seu comportamento é como $N$ para tentar advinhar a cadeia $x$.
+
+Logo, se $X$ termina em um estado de aceitação para a cadeia $w$, deve existir uma cadeia $x$, tal que $x \in B$ e $wx \in A$ e, portanto, $X$ reconhece a linguagem $A/B$.
+
+Suponha que $A$ é livre do contexto e $B$ é regular. Sejam $P = (Q_1 , \Sigma, \Gamma, \delta_1, q_1, F_1)$ um AP e $N = (Q_2, \Sigma, \delta_2, q_2, F_2)$ um AFN que reconhecem as linguagens $A$ e $B$, respectivamente. Definimos por $X = (Q, \Sigma, \Gamma, \delta, q_0, F)$ um autômato a pilha que reconhece $A/B$, como se segue:
+\begin{itemize}
+    \item $Q = Q_1 \cup (Q_1 \times Q_2)$,
+    \item $q_0 = q_1$,
+    \item $F_1 \times F_2$
+    \item $\delta$ é a função de transição de $X$, definida como:
+    
+    Se $q \in Q_1$
+    \begin{align*}
+    \delta(q, a, u) = \begin{cases}
+                \delta_1(q, a, u), \quad \text{se}\ a \in \Sigma \\
+                \delta_1(q, \epsilon, u) \cup {((q, q_2), \epsilon)}, \quad \text{se}\ a, u = \epsilon
+              \end{cases}
+    \end{align*}
+    
+    Se $(q, r) \in Q_1 \times Q_2$
+    \begin{align*}
+    \delta((q, r), a, u) = \begin{cases}
+                \emptyset, \quad \text{se}\ a \in \Sigma \\
+                {((q_p , q_n), v) : (q_p , v) \in \delta_1(q, b, u), q_n \in \delta_2 (r, b), b \in \Sigma_{\epsilon} }, \quad \text{se}\ a = \epsilon
+              \end{cases}
+    \end{align*}    
+\end{itemize}
