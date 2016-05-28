@@ -1,0 +1,12 @@
+
+\noindent \textbf{L5.1 (Sipser 3.06)} No Teorema 3.21 mostramos que uma linguagem é Turing-reconhecível sse algum
+enumerador a enumera. Por que não usamos o seguinte algoritmo mais simples para a direção de ida da prova? Tal qual anteriormente, $s_1, s_2, \ldots $ é uma lista de todas as cadeias em $\Sigma^*$.
+
+$E$ = "Ignore a entrada.
+\begin{enumerate}[label={\textbf{\arabic*.}}, leftmargin=1.05in]
+\item Repita o que se segue para $i = 1, 2, 3, \ldots$
+\item Rode $M$ sobre $s_i$.
+\item Se ela aceita, imprima $s_i$."
+\end{enumerate}
+
+\textbf{Resposta: } O algoritmo indica que devemos rodar $M$ sobre todas as cadeias possíveis de $\Sigma^*$. A mudança sugerida no enunciado faz com que $M$ execute em uma cadeia $s_i$ por vez e, caso $M$ aceite $s_i$, o enumerador $E$ imprime-na. Ocorre que $M$ pode entrar em \textit{loop} para uma cadeia $s_k$ qualquer e, por conseguinte, nenhuma outra cadeia subsequente a $s_k$ será impressa por $E$ e, portanto, a linguagem de $M$ será diferente do conjunto de cadeias listadas por $E$.\\[6pt]
