@@ -1,0 +1,34 @@
+
+\noindent \textbf{L6.4 (Sipser 3.16)} Mostre que a coleção de linguagens Turing-reconhecíveis é fechada sob a operação de 
+\begin{enumerate}[label={\textbf{\alph*.}}]
+    \item união\\[3pt]
+    %%%% New answer
+    \textbf{Resposta: } Seja $L_1$ e $L_2$ linguagens Turing-reconhecíveis. Logo, existem máquinas de Turing $M_1$ e $M_2$ que reconhecem $L_1$ e $L_2$, respectivamente. Vamos construir uma máquina de Turing $M$ capaz de reconhecer a união $L_1 \cup L_2$ da seguinte forma:\\[3pt]
+    $M =$ “Sobre a cadeia de entrada $w$:
+    \begin{enumerate}[label={\textbf{\arabic*.}}, leftmargin=1in]
+        \item Repita o seguinte para $i = 1, 2, 3, \ldots$
+    
+        \item Rode as máquinas $M_1$ e $M_2$ sobre $w$ por $i$ passos. Se $M_1$ ou $M_2$ aceita $w$, \textit{aceite}. Se $M_1$ e $M_2$ param e rejeitam $w$, então \textit{rejeite}.”
+
+    \end{enumerate}
+    
+    A máquina construída reconhece cadeias de $L_1 \cup L_2$, pois se $M_1$ ou $M_2$ aceitam $w$, em algum momento a máquina $M$ aceitará $w$, já que a máquina vai, passo a passo, tentando reconhecer $w$ em $M_1$ e $M_2$ simultaneamente. $M$ poderá entrar em \textit{loop} se $M_1$ ou $M_2$ entrar em \textit{loop} e ambas rejeitarem $w$.
+    
+    \item concatenação\\[3pt]
+    %%%% New answer
+    \textbf{Resposta: } Seja $L_1$ e $L_2$ linguagens Turing-reconhecíveis. Logo, existem máquinas de Turing $M_1$ e $M_2$ que reconhecem $L_1$ e $L_2$, respectivamente. Vamos construir uma máquina de Turing $M$ capaz de reconhecer a concatenação $L_1L_2$.
+    
+    \item estrela
+    
+    \item intersecção\\[3pt]
+    %%%% New answer
+    \textbf{Resposta: } Seja $L_1$ e $L_2$ linguagens Turing-reconhecíveis. Logo, existem máquinas de Turing $M_1$ e $M_2$ que reconhecem $L_1$ e $L_2$, respectivamente. Vamos construir uma máquina de Turing $M$ capaz de reconhecer a intersecção $L_1 \cap L_2$ da seguinte forma:\\[3pt]
+    $M =$ “Sobre a cadeia de entrada $w$:
+    \begin{enumerate}[label={\textbf{\arabic*.}}, leftmargin=1in]
+        \item Repita o seguinte para $i = 1, 2, 3, \ldots$
+    
+        \item Rode as máquinas $M_1$ e $M_2$ sobre $w$ por $i$ passos. Se $M_1$ e $M_2$ aceitam $w$, \textit{aceite}. Se $M_1$ ou $M_2$ para e rejeita $w$, então \textit{rejeite}.”
+    \end{enumerate}
+    
+    A máquina construída aceita cadeias de $L_1 \cap L_2$, pois se $w \in L_1 \cap L_2$, significa que $\exists w \ |\ w \in L_1$ e $w \in L_2$. Como a máquina testa $w$ em $M_1$ e $M_2$, e só aceita caso $w$ seja aceita por ambas, temos que a máquina $M$ reconhece as cadeias de $L_1 \cap L_2$. $M$ poderá entrar em \textit{loop} se $M_1$ ou $M_2$ entrar em \textit{loop} e rejeitar $w$.
+\end{enumerate}
