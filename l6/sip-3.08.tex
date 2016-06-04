@@ -6,27 +6,37 @@
 $M_a = $ "Sobre a cadeia de entrada $w$:
 \begin{enumerate}[label={\textbf{\arabic*.}}, leftmargin=1in]
 \item Se $w$ é a cadeia vazia, \textit{aceite}, caso contrário, vá para o passo 2.
-\item Faça uma varredura em $w$ da esquerda para a direita e marque o primeiro 0 que ainda não esteja marcado. Se nenhum 0 desmarcado foi encontrado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
-\item Faça uma varredura em $w$ da esquerda para a direita e marque o primeiro 1 que ainda não esteja marcado. Se a varredura não encontrou nenhum 1 desmarcado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
-\item Faça uma nova varredura em $w$ da esquerda para a direita. Se um 0 desmarcado for encontrado, volte a cabeça uma posição à esquerda e retorne ao passo 2, caso contrário, mova a cabeça para a extremidade esquerda da fita e passe ao passo 5.
-\item Novamente, faça uma varredura em $w$ da esquerda para a direita. Se houver um 1 desmarcado, \textit{rejeite}, senão \textit{aceite}.
+\item Faça uma varredura na fita e marque o primeiro 0 que ainda não esteja marcado. Se nenhum 0 desmarcado foi encontrado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
+\item Faça uma varredura na fita e marque o primeiro 1 que ainda não esteja marcado. Se a varredura não encontrou nenhum 1 desmarcado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
+\item Faça uma nova varredura na fita. Se um 0 ou um 1 desmarcado for encontrado, mova a cabeça para a extremidade esquerda da fita e retorne ao passo 2, caso contrário, \textit{aceite}.
 \end{enumerate}
 
 \item \{$w\ |\ w$ contém duas vezes mais 0s que 1s\}\\[3pt]
 \textbf{Resposta: } Vamos chamar de $M_b$ a MT que decide a linguagem em \textbf{b.} A estratégia utilizada aqui é similar à linguagem do item \textbf{a.}\\[3pt]
 $M_b = $ "Sobre a cadeia de entrada $w$:
 \begin{enumerate}[label={\textbf{\arabic*.}}, leftmargin=1in]
-\item Faça uma varredura em $w$ da esquerda para a direita e marque o primeiro 0 que ainda não esteja marcado. Mova a cabeça para a direita até encontrar o segundo 0 que não esteja marcado e marque-o. Se nenhum ou apenas um 0 desmarcado foi encontrado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
-\item Faça uma varredura em $w$ da esquerda para a direita e marque o primeiro 1 que ainda não esteja marcado. Se a varredura não encontrou nenhum 1 desmarcado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
-\item Faça uma nova varredura em $w$ da esquerda para a direita. Se pelo menos dois 0s desmarcados foram encontrados, retorne ao passo 1, caso contrário, passe ao passo 4. Antes de mover-se para o passo decidido, mova a cabeça para a extremidade esquerda da fita.
-\item Novamente, faça uma varredura em $w$ da esquerda para a direita. Se houver um 1 desmarcado, \textit{rejeite}, senão \textit{aceite}.
+\item Repita por duas vezes o próximo estágio:
+\item \begin{addmargin}[1em]{0em}
+Faça uma varredura na fita e marque o primeiro 0 que ainda não esteja marcado. Se nenhum 0 desmarcado foi encontrado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
+\end{addmargin}
+\item Faça uma varredura na fita e marque o primeiro 1 que ainda não esteja marcado. Se a varredura não encontrou nenhum 1 desmarcado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
+\item Faça uma nova varredura na fita. Se um 0 ou um 1 desmarcado for encontrado, mova a cabeça para a extremidade esquerda da fita e retorne ao passo 1, caso contrário, \textit{aceite}.
+
+\begin{comment}
+\item Faça uma varredura na fita da esquerda para a direita e marque o primeiro 0 que ainda não esteja marcado. Mova a cabeça para a direita até encontrar o segundo 0 que não esteja marcado e marque-o. Se nenhum ou apenas um 0 desmarcado foi encontrado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
+\item Faça uma varredura na fita da esquerda para a direita e marque o primeiro 1 que ainda não esteja marcado. Se a varredura não encontrou nenhum 1 desmarcado, \textit{rejeite}. Retorne a cabeça para a extremidade esquerda da fita.
+\item Faça uma nova varredura na fita da esquerda para a direita. Se pelo menos dois 0s desmarcados foram encontrados, retorne ao passo 1, caso contrário, passe ao passo 4. Antes de mover-se para o passo decidido, mova a cabeça para a extremidade esquerda da fita.
+\item Novamente, faça uma varredura na fita da esquerda para a direita. Se houver um 1 desmarcado, \textit{rejeite}, senão \textit{aceite}.
+\end{comment}
+
 \end{enumerate}
 
-\item \{$w\ |\ w$ não contém duas vezes mais 0s que 1s\}\\[3pt]
+\item \{$w\ |\ w$ \textbf{não} contém duas vezes mais 0s que 1s\}\\[3pt]
 \textbf{Resposta: } Vamos chamar de $M_c$ a MT que decide a linguagem em \textbf{c.} A estratégia utilizada aqui é aplicar a MT obtida em \textbf{b.} como uma subrotina.\\[3pt]
 $M_c = $ "Sobre a cadeia de entrada $w$:
 \begin{enumerate}[label={\textbf{\arabic*.}}, leftmargin=1in]
 \item Rode $w$ na máquina $M_b$.
-\item Se $M_b$ aceita $w$, \textit{rejeite}, senão \textit{aceite}.
+\item Se $M_b$ aceita $w$, \textit{rejeite}, senão, \textit{aceite}.
 \end{enumerate}
+
 \end{enumerate}
