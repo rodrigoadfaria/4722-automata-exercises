@@ -1,3 +1,33 @@
 
 \noindent \textbf{L6.3 (Sipser 3.14)} Um \textbf{\textit{autômato com fila}} é como um autômato com pilha, exceto que a pilha é substituída por uma fila. Uma \textbf{\textit{fila}} é uma fita que permite que símbolos sejam escritos somente na extremidade esquerda e lidos somente da extremidade direita. Cada operação de escrita (denominá-la-emos  \textit{empurrar}) adiciona um símbolo na extremidade esquerda da fila e cada operação de leitura (denominá-la-emos  \textit{puxar}) lê e remove um símbolo na extremidade direita. Como com um \texttt{AP}, a entrada é colocada numa fita de entrada de somente-leitura separada, e a cabeça sobre a fita de entrada pode mover somente da esquerda para a direita. A fita de entrada contem uma célula com um símbolo em branco após a entrada, de modo que essa extremidade da entrada possa ser detectada. Um autômato com fila aceita sua entrada entrando num estado especial de aceitação em qualquer momento. Mostre que uma linguagem pode ser reconhecida por um autômato com fila determinístico \textbf{sse} a linguagem é Turing-reconhecível.\\[3pt]
-\textbf{Resposta: } \textcolor{red}{TODO}
+\textbf{Resposta: } Vamos denominar de \textit{cauda} a extremidade esquerda da fila onde a operação \textit{empurrar} escreve símbolos. Analogamente, vamos denominar de \textit{cabeça} a extremidade direita da fila onde a operação \textit{puxar} lê e remove símbolos.
+
+\begin{proof}
+Para provar que uma linguagem pode ser reconhecida por um autômato com fila determinístico \textbf{sse} a linguagem é Turing-reconhecível, nós devemos mostrar que uma máquina de Turing e um autômato com fila são equivalentes e, para tanto, temos de demonstrar o seguinte:
+\begin{enumerate}
+\item Dada uma máquina de Turing $M$, podemos gerar um autômato com fila determinístico $A$ que reconhece a mesma linguagem de $M$.\\[3pt]
+Para provar que podemos gerar $A$ a partir de $M$, temos que mostrar que é possível simular todas as operações de $M$ com o autômato $A$. Seja $a, b \in \Gamma$ de $M$. Logo, temos que simular as transições de $M$ para a direita (D) e esquerda (E) com as operações possíveis em $A$.
+
+Primeiro, vamos escrever um símbolo, digamos \$, para indicar onde está a cabeça da fita de $M$, de forma tal que em $P$ temos $aw_1 \ldots  w_i\$w_{i+1} \ldots w_n$, onde $a$ é o símbolo sob a cabeça da fita de $M$, $w_1 \ldots w_i$ é o conteúdo da fita à direita de $a$ e $w_{i+1} \ldots w_n$ o conteúdo à esquerda de $a$.
+
+$a \rightarrow b, D$
+
+Nesse caso, basta \textit{puxar} $a$ da fila de $A$ e \textit{empurrar} o símbolo $b$ na \textit{cauda}. Essa operação simula a transição à direita de $M$, uma vez que a cabeça da fita se move para o próximo caractere da fita. Note que, ao encontrar o símbolo $\$$, nós devemos desfazer esse movimento.
+
+$a \rightarrow b, E$
+
+Esse movimento implica que devemos mover o caractere na \textit{cauda} da fila para a \textit{cabeça}.
+Seja o conteúdo da fila neste instante como $w_1 \ldots  w_n\$a$ e $a$ o símbolo que vamos movimentar. Primeiro, vamos \textit{empurrar} um símbolo, digamos \texttt{\#} para indicar a posição atual da fita, sendo assim, temos $w_1 \ldots  w_n\$a\texttt{\#}$. Depois, vamos \textit{puxar} e \textit{empurrar} todos os símbolos da fila de $P$ até atingir \texttt{\#} novamente e, então, nós descartamos este caractere pois todo o conteúdo da fila foi devidamente deslocado para a direita, o que resulta em $aw_1 \ldots  w_n\$$. Sendo assim, temos a simulação da transição à esquerda em $M$.
+
+\item Dado um autômato com fila determinístico $A$, podemos gerar uma máquina de Turing $M$ que reconhece a mesma linguagem de $A$.\\[3pt]
+Nessa direção da prova nós devemos mostrar que $M$ pode simular $A$ ao produzir o mesmo efeito das operações de \textit{empurrar} e \textit{puxar}. Seja $a$ o símbolo que vamos manipular.
+\begin{enumerate}
+\item No caso de \textit{empurrar}, basta que a cabeça da fita de $M$ percorra a entrada e escreva $a$ ao encontrar o primeiro símbolo \textvisiblespace.
+\item Para simular a operação de \textit{puxar}, a cabeça da fita é movida até a extremidade esquerda, onde está o símbolo $\$$, e marca o símbolo $a$ após $\$$ com uma marca especial, tal como $\ddt{a}$, indicando que ele foi removido.
+\end{enumerate}
+
+\end{enumerate}
+
+Dessa forma nós podemos concluir que uma linguagem pode ser reconhecida por um autômato com fila determinístico \textbf{sse} a linguagem é Turing-reconhecível.
+
+\end{proof}

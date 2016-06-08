@@ -30,6 +30,8 @@
 
 \usepackage{tabto}
 \usepackage{enumitem}
+\usepackage{accents}
+\usepackage{scrextend}
 
 \usepackage[backend=bibtex,bibencoding=ascii,sorting=none]{biblatex}
 \addbibresource{sources.bib}
@@ -59,7 +61,9 @@
 \newcommand\undermat[2]{% http://tex.stackexchange.com/a/102468/5764
   \makebox[0pt][l]{$\smash{\underbrace{\phantom{%
     \begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
-    
+
+\newcommand*{\ddt}[1]{%
+  \accentset{\mbox{\large\bfseries .\hspace{-0.25ex}.}}{#1}}    
 \begin{document}
 
 \title{MAC 4722 - Linguagens, Autômatos e Computabilidade}
