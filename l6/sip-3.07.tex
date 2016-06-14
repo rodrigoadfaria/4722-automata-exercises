@@ -1,0 +1,11 @@
+
+\noindent \textbf{Questão não da lista (Sipser 3.07)} Explique por que a descrição abaixo não é uma descrição de uma máquina de Turing legítima.
+
+$M_{ruim}$ = "A entrada é um polinômio $p$ sobre as variáveis  $x_1, \ldots , x_k$.
+\begin{enumerate}[label={\textbf{\arabic*.}}, leftmargin=1.05in]
+\item Tente todas as possíıveis valorações  de $x_1, \ldots, x_k$ para valores inteiros.
+\item Calcule o valor de $p$ sobre todas essas valorações.
+\item Se alguma dessas valorações torna o valor de $p$ igual a 0, \textit{aceite}, caso contrário, \textit{rejeite}.”
+\end{enumerate}
+
+\textbf{Resposta:} Para que uma máquina de Turing possa ser legítima, ela deve partir da premissa de que, em cada passo, uma quantidade finita de trabalho é realizada, o que não ocorre no passo 1, pois são infinitas as valorações de $x_1, \ldots , x_k$, já que é aplicado ao conjunto dos inteiros. Portanto, $M_{ruim}$ entrará em \textit{loop} já no primeiro passo.
